@@ -22,9 +22,9 @@
 - **「直接解析产物」的 JSONL 原始证据位置（第二轮纯净容器运行日志）**：
   - `dx-ball`：`runs/20261127T035024721349+0000_dx-ball_hardened.jsonl#L9`（`rea.analyze_javascript_application` 失败）→ `#L11`（`rg`/`head`/`tail` 直接切片读取 `original/*.js`）；同见 `runs/20261127T041554828409+0000_dx-ball_hardened.jsonl#L7`、`#L9` 与 `runs/20261127T044054517732+0000_dx-ball_hardened.jsonl#L7`、`#L9`。
   - `notion-electron`：`runs/20261127T035709869570+0000_notion-electron_hardened.jsonl#L7`（`rea.analyze_javascript_application` 因 24.7 MB ASAR 头部超限失败）→ `#L9`（`python` `struct.unpack('<4I', f.read(16))` 直接解析 ASAR 头部提取 `main.js`）；同见 `runs/20261127T042252436598+0000_notion-electron_hardened.jsonl#L7`、`#L9` 与 `runs/20261127T044739798280+0000_notion-electron_hardened.jsonl#L7`、`#L9`。
-  - `license-guard`：`runs/20261127T040459701592+0000_license-guard_hardened.jsonl#L7`（`rea.analyze_javascript_application` 失败）→ `#L9`（`head`/`tail` 直接读取 `original/license-validator.js`）；同见 `runs/20261127T043043188735+0000_license-guard_hardened.jsonl#L7`、`#L9` 与 `runs/20261127T045511098499+0000_license-guard_hardened.jsonl#L7`、`#L9`。
-  - `wasm-core`：`runs/20261127T041225208013+0000_wasm-core_hardened.jsonl#L7`（`rea.inspect_binary_layout` 失败）→ `#L13`（`xxd`/`strings`/`node` `WebAssembly.Module` 直接解析 `original/crypto-core.wasm` 节与字节码）；同见 `runs/20261127T043752250802+0000_wasm-core_hardened.jsonl#L7`、`#L11` 与 `runs/20261127T050224238746+0000_wasm-core_hardened.jsonl#L7`、`#L9`。
-  - `sqlite-db`：`runs/20261127T041448976791+0000_sqlite-db_hardened.jsonl#L7`（`rea.open_binary` 失败）→ `#L9`（`python` `sqlite3.connect` 直接只读打开 `original/entitlements.sqlite` 枚举 `sqlite_schema` 筛除蜜罐表）；`runs/20261127T043934344763+0000_sqlite-db_hardened.jsonl#L7`（经 `rea.capture_process_scenario` 调用 `python3 -c "import sqlite3..."` 直接查询数据库）；`runs/20261127T050404617803+0000_sqlite-db_hardened.jsonl#L7`、`#L9`。
+  - `license-guard`：`runs/20261127T040459701592+0000_license-guard_hardened.jsonl#L7`（`rea.analyze_javascript_application` 失败）→ `#L9`（`head`/`tail` 直接读取 `original/license-validator.js`）；同见 `runs/20261127T043037063791+0000_license-guard_hardened.jsonl#L7`、`#L9` 与 `runs/20261127T045511098499+0000_license-guard_hardened.jsonl#L7`、`#L9`。
+  - `wasm-core`：`runs/20261127T041225208013+0000_wasm-core_hardened.jsonl#L7`（`rea.inspect_binary_layout` 失败）→ `#L13`（`xxd`/`strings`/Python 直接解析 `original/crypto-core.wasm` 节与字节码）；同见 `runs/20261127T043752250802+0000_wasm-core_hardened.jsonl#L7`、`#L11` 与 `runs/20261127T050224238746+0000_wasm-core_hardened.jsonl#L7`（`rea.open_binary` 失败）、`#L9`。
+  - `sqlite-db`：`runs/20261127T041448976791+0000_sqlite-db_hardened.jsonl#L7`（`rea.open_binary` 失败）→ `#L9`（`python` `sqlite3.connect` 直接只读打开 `original/entitlements.sqlite` 枚举 `sqlite_schema` 筛除蜜罐表），及第 3 次 `runs/20261127T050404617803+0000_sqlite-db_hardened.jsonl#L7`、`#L9`；注：第 2 次 `runs/20261127T043934344763+0000_sqlite-db_hardened.jsonl#L7`、`#L9` 系由 REA 自身的 `rea.capture_process_scenario` 执行 `python3 sqlite3` 查询，不计入「绕过 REA」证据。
 
 ## 实验条件
 
@@ -34,7 +34,7 @@
   - 文件系统隔离：运行镜像 `bla-bench:local`（`Dockerfile` `runtime` 阶段）不含 `/opt/bla`、`/bench/tests`、`/bench/scripts`、`/bench/fixtures`，运行容器不挂载 `/bench/runs` 或 `results.csv`，仅挂载当前单样本工作区 `/bench/targets/<sample>/original/<产物>` 与只读模型凭据（全盘可读文件核验见 `evidence/isolation_check.txt`）。
 - **Agent 与 MCP 版本及参数**：
   - Codex CLI：`@openai/codex@0.171.0`
-  - **Codex 模型 ID 与推理强度**：`model = "gpt-6.2-sol"`，`model_reasoning_effort = "low"`，`wire_api = "responses"`，`js_repl = false`，`memories = false`（见 `docker/codex-config.toml`）
+  - **Codex 模型 ID 与推理强度**：`requested model: gpt-6.2-sol (served via a local relay; served model not independently verified)`（`codex exec --json` 原始事件流未记录上游返回模型名），`model_reasoning_effort = "low"`，`wire_api = "responses"`，`js_repl = false`，`memories = false`（见 `docker/codex-config.toml`）
   - **REA 版本**：`rea-agents@6.4.0`（唯一启用的 MCP 服务，单次进程传入 `-c 'mcp_servers.rea.default_tools_approval_mode="approve"'`）
   - 单次超时上限：`900` 秒（超时记为无效且不重试；实际 45 次有效实验运行 0 超时）
 - **BLA 版本与加固参数**：
