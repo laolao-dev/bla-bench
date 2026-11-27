@@ -1,36 +1,46 @@
-# Measuring BLA v3.6.0 Under Codex CLI + REA (5 Official Samples, n=3): 1.18×–3.58× Net Token Multiplier, 0% Interception
+# Measuring BLA v3.6.0 in Isolated Containers (Codex CLI + REA MCP): 1.86×–3.58× Net Token Multiplier (Median 2.92×) and 0/12 Interception on Gate-Passing Targets
 
-We ran an isolated, reproducible container benchmark of **BLA (`qybaihe/bla` v3.6.0)** to compare its modeled REA-only cost projections against metered token usage when a shell-capable coding agent is allowed to work around REA failures.
+We ran a reproducible, container-isolated benchmark of **[BLA (`qybaihe/bla` v3.6.0)](https://github.com/qybaihe/bla)** to measure metered token usage, wall-clock delay, and 12-case functional reconstruction accuracy when `bankrupt`-hardened artifacts are analyzed by a general-purpose coding agent.
 
-## Experimental Scope
+First, what worked as designed: **REA's default static analysis was stopped across all `15/15` hardened runs** (`14/15` explicit static-analyzer rejections, plus `1/15` `sqlite-db` run where static REA tools were skipped in favor of `rea.capture_process_scenario`), and **hardening increased median wall-clock time on the JS and Electron ASAR targets by `~5.7×–6.8×`** (`59.6s → 404.7s` on `dx-ball`, `75.9s → 434.6s` on `license-guard`, and `78.8s → 463.9s` on `notion-electron`).
 
-All findings below apply specifically **under this experimental setup (Codex CLI + REA, single prompt, 5 samples, `n=3` each)**:
+## 1. Experimental Setup & Threat-Model Scope
 
-- **Pinned stack**: BLA `3.6.0` (`8dcf9858f5c931e26c4d3526b29c8e10a97ec17f`, `bla defend --intensity bankrupt --seed bla-benchmark-showcase-v1`), `@openai/codex@0.171.0` (`gpt-6.2-sol`, `model_reasoning_effort = "low"`), `rea-agents@6.4.0`.
-- **Clean container isolation**: The runtime image (`bla-bench:local`) removes `/opt/bla`, all test/oracle scripts, and all unhardened fixtures, with host-side log capture so `/bench/runs` is never mounted inside the runtime container (`evidence/isolation_check.txt`). Empty-load baseline = `11,092` input tokens (`3/3` runs).
-- **Modeled vs. measured threat model**: BLA's published `152.5×–4,817.7×` figures estimate the cost for an agent **relying solely on REA**, whereas our benchmark measures a coding agent **permitted to bypass REA** using standard local Python/Node/shell inspection once REA rejects an artifact.
-- **Gate split**: 4 of 5 targets score `92–93/100`; `sqlite-db` scores `68/100` in stock SQLite mode (**below BLA's default `70/100` defense-score gate**, emitted via `--fail-under 0`), so results are reported for both groups.
+All observations below are scoped to **this experimental setup (Codex CLI + REA MCP, single prompt per target, 5 official targets, `n=3` each)**:
 
-## Clean-Container Results (`n=3` Medians, Baseline Deducted)
+- **Pinned stack**:
+  - **BLA**: `qybaihe/bla` `v3.6.0` at commit `8dcf9858f5c931e26c4d3526b29c8e10a97ec17f`, hardened via `bla defend <input> -o <output> --intensity bankrupt --seed bla-benchmark-showcase-v1 --fail-under 0 --json` (`--fail-under 0` only affected `sqlite-db` at `68/100`; the other 4 targets scored `92–93/100` and already passed BLA's default `70/100` gate).
+  - **Agent & Model**: `@openai/codex@0.171.0` (`requested model: gpt-6.2-sol (served via a local relay; served model not independently verified)`, `model_reasoning_effort = "low"`, `wire_api = "responses"`).
+  - **MCP Server**: `rea-agents@6.4.0` (`mcp_servers.rea.default_tools_approval_mode = "approve"`).
+- **Container isolation & baseline**: The stripped runtime image (`bla-bench:local`, non-root `uid=10001`, `--cap-drop ALL`, `--internal` network + TCP relay) contains no `/opt/bla`, no test/oracle scripts, no unhardened fixtures, and no mounted `runs/` history (`evidence/isolation_check.txt`); 12-case functional equivalence runs post-hoc in a `--network none` verifier container. Empty-load baseline = `11,092` input tokens (`3/3` runs), deducted before computing net multipliers.
+- **Modeled vs. measured scope**: Our understanding is that BLA's built-in estimator (`bla benchmark` / `token-estimator.ts`) models theoretical token cost when an agent relies exclusively on REA's static analysis pipeline, whereas our benchmark measures a coding agent permitted to fall back to local Python/Node/shell scripts once REA rejects or truncates a hardened artifact.
 
-| Target | Format | BLA Score & Gate | `original` Median In | `hardened` Median In | **Measured Net Multiplier** | BLA Modeled (REA-Only) | `hardened` Interception |
-|---|---|---|---:|---:|---:|---:|---:|
-| `dx-ball` | `.js` | 92/100 (pass) | 174,454 | 383,837 | **2.28×** | 4,817.7× | 0/3 (0%) |
-| `notion-electron` | `.asar` | 92/100 (pass) | 177,814 | 605,141 | **3.56×** | 2,532.3× | 0/3 (0%) |
-| `license-guard` | `.js` | 92/100 (pass) | 177,953 | 608,792 | **3.58×** | 4,817.7× | 0/3 (0%) |
-| `wasm-core` | `.wasm` | 93/100 (pass) | 198,641 | 359,023 | **1.86×** | 381.5× | 0/3 (0%) |
-| `sqlite-db`* | `.sqlite` | 68/100 (below default 70 gate) | 171,631 | 200,255 | **1.18×** | 152.5× | 0/3 (0%) |
+## 2. Clean-Container Results (`n=3` Medians, Baseline `11,092` Deducted)
 
-- **Gate-Passing Group (4 samples, score ≥ 70)**: **`1.86×–3.58×`** net input token multiplier (median **`2.92×`**), **`0/12 (0.0%)`** interception rate.
-- **All-Samples Group (5 samples, including `sqlite-db` at 68/100)**: **`1.18×–3.58×`** net input token multiplier (median **`2.28×`**), **`0/15 (0.0%)`** interception rate.
+| Target | Format | BLA Score & Gate Status | `original` Median In | `hardened` Median In | Median Time (`orig` → `hard`) | **Measured Net Multiplier** | BLA Modeled Estimate (REA-Only) | `hardened` Interception |
+|---|---|---|---:|---:|---:|---:|---:|---:|
+| `dx-ball` | `.js` | `92/100` (pass) | 174,454 | 383,837 | 59.6s → 404.7s | **2.28×** | 4,817.7× | **0/3 (0%)** |
+| `notion-electron` | `.asar` | `92/100` (pass) | 177,814 | 605,141 | 78.8s → 463.9s | **3.56×** | 2,532.3× | **0/3 (0%)** |
+| `license-guard` | `.js` | `92/100` (pass) | 177,953 | 608,792 | 75.9s → 434.6s | **3.58×** | 4,817.7× | **0/3 (0%)** |
+| `wasm-core` | `.wasm` | `93/100` (pass) | 198,641 | 359,023 | 63.4s → 101.5s | **1.86×** | 381.5× | **0/3 (0%)** |
+| `sqlite-db`* | `.sqlite` | `68/100` (below default 70 gate) | 171,631 | 200,255 | 62.8s → 79.5s | **1.18×** | 152.5× | **0/3 (0%)** |
 
-## JSONL Evidence of Direct Artifact Parsing
+- **Primary result — Gate-Passing Group (4 targets, defense score `92–93/100` ≥ 70)**: **`1.86×–3.58×`** net input-token multiplier (median **`2.92×`**), **`0/12 (0.0%)`** functional interception (`12/12` test cases matched on every run).
+- **Additional reference — All 5 Targets (including `sqlite-db` at `68/100` in stock SQLite mode)**: `1.18×–3.58×` net input-token multiplier (median `2.28×`), `0/15 (0.0%)` interception.
 
-In every hardened run where REA's static analyzer rejected the target, Codex pivoted immediately to targeted local parsing:
-- `dx-ball`: `runs/20261127T035024721349+0000_dx-ball_hardened.jsonl#L9` (`rea.analyze_javascript_application` failed) → `#L11` (`rg`/`head`/`tail` slicing `original/*.js`);
-- `notion-electron`: `runs/20261127T035709869570+0000_notion-electron_hardened.jsonl#L7` (REA rejected 24.7 MB ASAR header) → `#L9` (`python` `struct.unpack('<4I', f.read(16))` reading the ASAR Pickle header);
-- `license-guard`: `runs/20261127T040459701592+0000_license-guard_hardened.jsonl#L7` → `#L9` (`head`/`tail` slicing `original/license-validator.js`);
-- `wasm-core`: `runs/20261127T041225208013+0000_wasm-core_hardened.jsonl#L7` → `#L13` (`xxd`/`strings`/`node` `WebAssembly.Module` section parsing);
-- `sqlite-db`: `runs/20261127T041448976791+0000_sqlite-db_hardened.jsonl#L7` → `#L9` (`python` `sqlite3.connect` inspecting `sqlite_schema`).
+## 3. What Happened in the Logs After REA Refusals
 
-Under this experimental setup (Codex CLI + REA, single prompt, 5 samples, `n=3`), BLA reliably trips REA's default static budgets and increases JS/ASAR wall-clock time ~6×, while an agent allowed to bypass REA with local scripts reconstructs all 5 targets (`12/12` test cases each) at `1.18×–3.58×` net token cost.
+In `14/15` hardened runs, REA's static analyzers hit BLA's size or structural limits as intended, and Codex pivoted to targeted local scripts on `./original/*` (slicing JS exports with `rg`/`head`/`tail`, unpacking the 24.7 MB ASAR Pickle header via Python `struct.unpack('<4I', f.read(16))`, parsing Wasm sections in Python/Node, and inspecting `sqlite_schema` via `sqlite3.connect`); in the remaining `1/15` run (`sqlite-db` run 2), REA itself executed the query through `rea.capture_process_scenario` (not counted as bypassing REA). In our runs, single-artifact `bla defend` reliably blocked default REA static passes and slowed JS/ASAR analysis by `~5.7×–6.8×`, while a shell-capable coding agent was still able to recover these small standalone functions.
+
+## 4. Limitations
+
+- **Single agent harness**: Only `@openai/codex@0.171.0` with local container shell access was evaluated; agents restricted strictly to MCP tools without shell execution would hit REA's refusals directly.
+- **Reasoning effort (`low`) & served-model metadata**: Running at `model_reasoning_effort = "low"` makes the `0/12` interception observation stronger, though token multipliers could differ at higher reasoning-effort tiers. In addition, `codex exec --json` logs do not record upstream response model IDs, so the served model is not independently verified from the JSONL files.
+- **Sample size & fixture scale**: `n=3` per `(target, variant)` pair with a single prompt per target on 5 small standalone showcase fixtures (`54 B–12 KB` unhardened).
+- **Stage-1 CLI scope only**: Only standalone `bla defend` hardening was tested; Stage-2 host-agent source weaving and cross-artifact entanglement were not evaluated.
+- **Round-1 isolation disclosure & Round-2 clean rerun**: Our initial 30-run pass had incomplete static container isolation (`0/15` out-of-directory reads confirmed by JSONL audit); rebuilding a stripped runtime image and rerunning all 15 hardened runs yielded consistent results (gate-passing median `2.67×` in Round 1 vs. `2.92×` in Round 2; `0%` interception in both).
+
+## 5. Links
+
+- Reproduction scripts, Dockerfiles, sanitized JSONL logs, and equivalence checks: https://github.com/laolao-dev/bla-bench
+- Upstream benchmark report: [qybaihe/bla#319](https://github.com/qybaihe/bla/issues/319) (plus a showcase fixture jump-offset bug report: [qybaihe/bla#320](https://github.com/qybaihe/bla/issues/320))
