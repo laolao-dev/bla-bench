@@ -1,0 +1,112 @@
+{
+  "bla_repo": "https://github.com/qybaihe/bla",
+  "bla_version": "3.6.0",
+  "bla_commit": "8dcf9858f5c931e26c4d3526b29c8e10a97ec17f",
+  "cli_subcommand": "defend",
+  "intensity": "bankrupt",
+  "seed": "bla-benchmark-showcase-v1",
+  "command_template": "node /opt/bla/dist/cli.js defend <input> -o <output> --intensity bankrupt --seed bla-benchmark-showcase-v1 --json",
+  "bla_showcase_aggregate_modeled_token_multiplier": 1293.6,
+  "samples": [
+    {
+      "id": "dx-ball",
+      "filename": "dx-ball-sound-pan.js",
+      "detected_format": "javascript",
+      "original_bytes": 403,
+      "original_sha256": "cc017d00b3f3bcf34caf7099886b65b5995a4ef8b3489abd52b4394609bd8131",
+      "hardened_bytes": 170886,
+      "hardened_sha256": "6fc90201efe6d8cfba335414eaf5bfa76279ddf43f5a946867ed965a8edc1b7b",
+      "size_ratio": 424.03,
+      "defense_score": 92,
+      "rea_budgets_tripped": [
+        "alias-selections",
+        "primitive-candidates",
+        "primitive-bytes",
+        "getter-expansion"
+      ],
+      "bla_defend_modeled_token_multiplier": 4817.7,
+      "bla_benchmark_modeled_before_tokens": 4800,
+      "bla_benchmark_modeled_after_tokens": 23125000,
+      "bla_benchmark_modeled_token_multiplier": 4817.7
+    },
+    {
+      "id": "notion-electron",
+      "filename": "notion-clipboard.asar",
+      "detected_format": "electron-asar",
+      "original_bytes": 1769,
+      "original_sha256": "735964ff3815cc443ddbd8c73cd3333c1a5de4ae4d22a62dcd4b56bd38086f11",
+      "hardened_bytes": 24671339,
+      "hardened_sha256": "33534016f649e086207747d89e90214e7ff9f72767cc501830f3c8ed1c5989ca",
+      "size_ratio": 13946.49,
+      "defense_score": 92,
+      "rea_budgets_tripped": [
+        "alias-selections",
+        "primitive-candidates",
+        "primitive-bytes",
+        "getter-expansion"
+      ],
+      "bla_defend_modeled_token_multiplier": 2532.3,
+      "bla_benchmark_modeled_before_tokens": 9132,
+      "bla_benchmark_modeled_after_tokens": 23125000,
+      "bla_benchmark_modeled_token_multiplier": 2532.3
+    },
+    {
+      "id": "license-guard",
+      "filename": "license-validator.js",
+      "detected_format": "javascript",
+      "original_bytes": 782,
+      "original_sha256": "64af956481b27f81d0376ce917d5be64aac13884eee0039c405ef55897fd427d",
+      "hardened_bytes": 183188,
+      "hardened_sha256": "9a67d258587e950d3fc5a264f2d6e6aea0fb70c8068b7033a696b16e283325b5",
+      "size_ratio": 234.26,
+      "defense_score": 92,
+      "rea_budgets_tripped": [
+        "alias-selections",
+        "primitive-candidates",
+        "primitive-bytes",
+        "getter-expansion"
+      ],
+      "bla_defend_modeled_token_multiplier": 4817.7,
+      "bla_benchmark_modeled_before_tokens": 4800,
+      "bla_benchmark_modeled_after_tokens": 23125000,
+      "bla_benchmark_modeled_token_multiplier": 4817.7
+    },
+    {
+      "id": "wasm-core",
+      "filename": "crypto-core.wasm",
+      "detected_format": "wasm",
+      "original_bytes": 54,
+      "original_sha256": "82c633e5c64ad6dc75d2a82c4839edf7761f4b27e9e58321c0cc2cd6d714ae2e",
+      "hardened_bytes": 6880378,
+      "hardened_sha256": "760ac7c6e52c36f2ad406925326de36595d4597212574ab35c58b513da5340b2",
+      "size_ratio": 127414.41,
+      "defense_score": 93,
+      "rea_budgets_tripped": [
+        "wasm-custom-name-mirage",
+        "wasm-enclave-chaff"
+      ],
+      "bla_defend_modeled_token_multiplier": 381.5,
+      "bla_benchmark_modeled_before_tokens": 4800,
+      "bla_benchmark_modeled_after_tokens": 1831000,
+      "bla_benchmark_modeled_token_multiplier": 381.5
+    },
+    {
+      "id": "sqlite-db",
+      "filename": "entitlements.sqlite",
+      "detected_format": "sqlite",
+      "original_bytes": 12288,
+      "original_sha256": "270fe776fbcccaa476037103a67d64920ce9a155505e368167e3b4dfb82a1bf5",
+      "hardened_bytes": 49152,
+      "hardened_sha256": "0580b5de4172d823d18f07817ecb60c67b446228e4be9c3bbdf1b1de4542e28b",
+      "size_ratio": 4.0,
+      "defense_score": 68,
+      "rea_budgets_tripped": [
+        "sqlite-enclave-honey-tables"
+      ],
+      "bla_defend_modeled_token_multiplier": 152.5,
+      "bla_benchmark_modeled_before_tokens": 10568,
+      "bla_benchmark_modeled_after_tokens": 1611335,
+      "bla_benchmark_modeled_token_multiplier": 152.5
+    }
+  ]
+}

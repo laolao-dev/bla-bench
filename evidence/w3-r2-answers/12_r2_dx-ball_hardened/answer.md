@@ -1,0 +1,5 @@
+`calculateSoundPan(horizontal, primary_horizontal, width)` computes a signed stereo pan. For numeric inputs it takes `mid = int32(width) >> 1`, computes `18 * (primary_horizontal - mid) + (int32(horizontal - mid) >> 2)`, then clamps to `[-10000, 10000]` and truncates toward zero. The shifts are signed: a secondary offset of `-1` shifts to `-1`, not zero.
+
+**Evidence:** `original/dx-ball-sound-pan.js:918` maps the exports to `hydratePendingShardSft` (line 862) and `flushDeferredCursorCfg208jj` (line 805). The shipped seed initializer at line 489 yields `461343881`, whose low three bits are `1`. Argument-dependent seed terms are shifted left eight bits, so they cannot affect the low-bit predicates. The selected `Math.imul` expressions give the multiplier `18` and both clamp thresholds and magnitudes `10000`. The slot bookkeeping does not feed the returned value.
+
+REA's JavaScript application-graph request timed out. The result comes from the shipped source, with representative outputs checked on the extracted arithmetic in Node. The Python port reproduces numeric return values, not internal bookkeeping or JavaScript object coercion.

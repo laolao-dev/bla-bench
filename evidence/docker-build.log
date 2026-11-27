@@ -1,0 +1,364 @@
+﻿#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 3.69kB 0.0s done
+#1 DONE 0.0s
+
+#2 resolve image config for docker-image://docker.io/docker/dockerfile:1
+#2 ...
+
+#3 [auth] docker/dockerfile:pull token for registry-1.docker.io
+#3 DONE 0.0s
+
+#2 resolve image config for docker-image://docker.io/docker/dockerfile:1
+#2 DONE 1.2s
+
+#4 docker-image://docker.io/docker/dockerfile:1@sha256:572cebbc2b15e6f84c077742952674889cb63cd5e9b80abdffcbe587b6f19183
+#4 resolve docker.io/docker/dockerfile:1@sha256:572cebbc2b15e6f84c077742952674889cb63cd5e9b80abdffcbe587b6f19183 0.0s done
+#4 CACHED
+
+#5 [internal] load metadata for docker.io/library/python:3.12.16-slim-bookworm@sha256:44cf1793efa7c7a476bb0f2cff81443f4a072c90c1cb127e2924933daa3e8c64
+#5 ...
+
+#6 [auth] library/python:pull token for registry-1.docker.io
+#6 DONE 0.0s
+
+#7 [auth] library/node:pull token for registry-1.docker.io
+#7 DONE 0.0s
+
+#8 [internal] load metadata for docker.io/library/node:24.22.2-bookworm-slim@sha256:01d566e8d94d8c619591d78652babfccd3c6992a3dffa9ed5ab39e11cf6c70e9
+#8 DONE 1.0s
+
+#5 [internal] load metadata for docker.io/library/python:3.12.16-slim-bookworm@sha256:44cf1793efa7c7a476bb0f2cff81443f4a072c90c1cb127e2924933daa3e8c64
+#5 DONE 1.0s
+
+#9 [internal] load .dockerignore
+#9 transferring context: 233B done
+#9 DONE 0.0s
+
+#10 [internal] load build context
+#10 transferring context: 85.72kB 0.0s done
+#10 DONE 0.0s
+
+#11 [node 1/1] FROM docker.io/library/node:24.22.2-bookworm-slim@sha256:01d566e8d94d8c619591d78652babfccd3c6992a3dffa9ed5ab39e11cf6c70e9
+#11 resolve docker.io/library/node:24.22.2-bookworm-slim@sha256:01d566e8d94d8c619591d78652babfccd3c6992a3dffa9ed5ab39e11cf6c70e9 0.0s done
+#11 DONE 0.0s
+
+#12 [base 1/6] FROM docker.io/library/python:3.12.16-slim-bookworm@sha256:44cf1793efa7c7a476bb0f2cff81443f4a072c90c1cb127e2924933daa3e8c64
+#12 resolve docker.io/library/python:3.12.16-slim-bookworm@sha256:44cf1793efa7c7a476bb0f2cff81443f4a072c90c1cb127e2924933daa3e8c64 0.0s done
+#12 DONE 0.0s
+
+#13 [base 2/6] COPY --from=node /usr/local/bin/node /usr/local/bin/node
+#13 CACHED
+
+#14 [base 3/6] COPY --from=node /usr/local/lib/node_modules /usr/local/lib/node_modules
+#14 CACHED
+
+#15 [base 4/6] RUN ln -s ../lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm  && ln -s ../lib/node_modules/npm/bin/npx-cli.js /usr/local/bin/npx  && node --version && npm --version
+#15 0.557 v24.22.2
+#15 0.695 11.19.1
+#15 DONE 0.7s
+
+#16 [base 5/6] RUN apt-get update  && apt-get install -y --no-install-recommends git ca-certificates procps  && rm -rf /var/lib/apt/lists/*
+#16 0.311 Get:1 http://deb.debian.org/debian bookworm InRelease [151 kB]
+#16 0.338 Get:2 http://deb.debian.org/debian bookworm-updates InRelease [55.4 kB]
+#16 0.349 Get:3 http://deb.debian.org/debian-security bookworm-security InRelease [34.8 kB]
+#16 0.393 Get:4 http://deb.debian.org/debian bookworm/main amd64 Packages [8790 kB]
+#16 0.795 Get:5 http://deb.debian.org/debian bookworm-updates/main amd64 Packages [6924 B]
+#16 0.795 Get:6 http://deb.debian.org/debian-security bookworm-security/main amd64 Packages [383 kB]
+#16 1.364 Fetched 9421 kB in 1s (8327 kB/s)
+#16 1.364 Reading package lists...
+#16 1.690 Reading package lists...
+#16 1.994 Building dependency tree...
+#16 2.076 Reading state information...
+#16 2.154 ca-certificates is already the newest version (20250419~deb12u2).
+#16 2.154 The following additional packages will be installed:
+#16 2.154   git-man libbrotli1 libcurl3-gnutls liberror-perl libexpat1 libgdbm-compat4
+#16 2.154   libldap-2.5-0 libnghttp2-14 libperl5.36 libproc2-0 libpsl5 librtmp1
+#16 2.155   libsasl2-2 libsasl2-modules-db libssh2-1 perl perl-modules-5.36
+#16 2.155 Suggested packages:
+#16 2.155   gettext-base git-daemon-run | git-daemon-sysvinit git-doc git-email git-gui
+#16 2.155   gitk gitweb git-cvs git-mediawiki git-svn sensible-utils perl-doc
+#16 2.155   libterm-readline-gnu-perl | libterm-readline-perl-perl make
+#16 2.155   libtap-harness-archive-perl
+#16 2.155 Recommended packages:
+#16 2.155   patch less ssh-client libldap-common publicsuffix libsasl2-modules psmisc
+#16 2.216 The following NEW packages will be installed:
+#16 2.216   git git-man libbrotli1 libcurl3-gnutls liberror-perl libexpat1
+#16 2.216   libgdbm-compat4 libldap-2.5-0 libnghttp2-14 libperl5.36 libproc2-0 libpsl5
+#16 2.216   librtmp1 libsasl2-2 libsasl2-modules-db libssh2-1 perl perl-modules-5.36
+#16 2.216   procps
+#16 2.251 0 upgraded, 19 newly installed, 0 to remove and 4 not upgraded.
+#16 2.251 Need to get 18.8 MB of archives.
+#16 2.251 After this operation, 103 MB of additional disk space will be used.
+#16 2.251 Get:1 http://deb.debian.org/debian-security bookworm-security/main amd64 perl-modules-5.36 all 5.36.0-7+deb12u4 [2817 kB]
+#16 2.415 Get:2 http://deb.debian.org/debian bookworm/main amd64 libgdbm-compat4 amd64 1.23-3 [48.2 kB]
+#16 2.419 Get:3 http://deb.debian.org/debian-security bookworm-security/main amd64 libperl5.36 amd64 5.36.0-7+deb12u4 [4208 kB]
+#16 2.632 Get:4 http://deb.debian.org/debian-security bookworm-security/main amd64 perl amd64 5.36.0-7+deb12u4 [239 kB]
+#16 2.644 Get:5 http://deb.debian.org/debian bookworm/main amd64 libproc2-0 amd64 2:4.0.2-3 [62.8 kB]
+#16 2.645 Get:6 http://deb.debian.org/debian bookworm/main amd64 procps amd64 2:4.0.2-3 [709 kB]
+#16 2.684 Get:7 http://deb.debian.org/debian-security bookworm-security/main amd64 libbrotli1 amd64 1.0.9-2+deb12u1 [275 kB]
+#16 2.694 Get:8 http://deb.debian.org/debian-security bookworm-security/main amd64 libsasl2-modules-db amd64 2.1.28+dfsg-10+deb12u1 [20.5 kB]
+#16 2.695 Get:9 http://deb.debian.org/debian-security bookworm-security/main amd64 libsasl2-2 amd64 2.1.28+dfsg-10+deb12u1 [59.9 kB]
+#16 2.699 Get:10 http://deb.debian.org/debian bookworm/main amd64 libldap-2.5-0 amd64 2.5.13+dfsg-5 [183 kB]
+#16 2.706 Get:11 http://deb.debian.org/debian bookworm/main amd64 libnghttp2-14 amd64 1.52.0-1+deb12u3 [72.4 kB]
+#16 2.713 Get:12 http://deb.debian.org/debian bookworm/main amd64 libpsl5 amd64 0.21.2-1 [58.7 kB]
+#16 2.717 Get:13 http://deb.debian.org/debian bookworm/main amd64 librtmp1 amd64 2.4+20151223.gitfa8646d.1-2+b2 [60.8 kB]
+#16 2.719 Get:14 http://deb.debian.org/debian-security bookworm-security/main amd64 libssh2-1 amd64 1.10.0-3+deb12u1 [176 kB]
+#16 2.726 Get:15 http://deb.debian.org/debian bookworm/main amd64 libcurl3-gnutls amd64 7.88.1-10+deb12u15 [386 kB]
+#16 2.743 Get:16 http://deb.debian.org/debian-security bookworm-security/main amd64 libexpat1 amd64 2.5.0-1+deb12u5 [108 kB]
+#16 2.752 Get:17 http://deb.debian.org/debian bookworm/main amd64 liberror-perl all 0.17029-2 [29.0 kB]
+#16 2.753 Get:18 http://deb.debian.org/debian bookworm/main amd64 git-man all 1:2.39.5-0+deb12u3 [2053 kB]
+#16 2.853 Get:19 http://deb.debian.org/debian bookworm/main amd64 git amd64 1:2.39.5-0+deb12u3 [7264 kB]
+#16 3.301 debconf: delaying package configuration, since apt-utils is not installed
+#16 3.325 Fetched 18.8 MB in 1s (19.2 MB/s)
+#16 3.348 Selecting previously unselected package perl-modules-5.36.
+#16 3.348 (Reading database ... 
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 6701 files and directories currently installed.)
+#16 3.379 Preparing to unpack .../00-perl-modules-5.36_5.36.0-7+deb12u4_all.deb ...
+#16 3.381 Unpacking perl-modules-5.36 (5.36.0-7+deb12u4) ...
+#16 3.745 Selecting previously unselected package libgdbm-compat4:amd64.
+#16 3.746 Preparing to unpack .../01-libgdbm-compat4_1.23-3_amd64.deb ...
+#16 3.751 Unpacking libgdbm-compat4:amd64 (1.23-3) ...
+#16 3.781 Selecting previously unselected package libperl5.36:amd64.
+#16 3.781 Preparing to unpack .../02-libperl5.36_5.36.0-7+deb12u4_amd64.deb ...
+#16 3.784 Unpacking libperl5.36:amd64 (5.36.0-7+deb12u4) ...
+#16 4.043 Selecting previously unselected package perl.
+#16 4.045 Preparing to unpack .../03-perl_5.36.0-7+deb12u4_amd64.deb ...
+#16 4.053 Unpacking perl (5.36.0-7+deb12u4) ...
+#16 4.088 Selecting previously unselected package libproc2-0:amd64.
+#16 4.089 Preparing to unpack .../04-libproc2-0_2%3a4.0.2-3_amd64.deb ...
+#16 4.091 Unpacking libproc2-0:amd64 (2:4.0.2-3) ...
+#16 4.121 Selecting previously unselected package procps.
+#16 4.122 Preparing to unpack .../05-procps_2%3a4.0.2-3_amd64.deb ...
+#16 4.132 Unpacking procps (2:4.0.2-3) ...
+#16 4.186 Selecting previously unselected package libbrotli1:amd64.
+#16 4.187 Preparing to unpack .../06-libbrotli1_1.0.9-2+deb12u1_amd64.deb ...
+#16 4.189 Unpacking libbrotli1:amd64 (1.0.9-2+deb12u1) ...
+#16 4.222 Selecting previously unselected package libsasl2-modules-db:amd64.
+#16 4.223 Preparing to unpack .../07-libsasl2-modules-db_2.1.28+dfsg-10+deb12u1_amd64.deb ...
+#16 4.225 Unpacking libsasl2-modules-db:amd64 (2.1.28+dfsg-10+deb12u1) ...
+#16 4.248 Selecting previously unselected package libsasl2-2:amd64.
+#16 4.249 Preparing to unpack .../08-libsasl2-2_2.1.28+dfsg-10+deb12u1_amd64.deb ...
+#16 4.251 Unpacking libsasl2-2:amd64 (2.1.28+dfsg-10+deb12u1) ...
+#16 4.279 Selecting previously unselected package libldap-2.5-0:amd64.
+#16 4.280 Preparing to unpack .../09-libldap-2.5-0_2.5.13+dfsg-5_amd64.deb ...
+#16 4.282 Unpacking libldap-2.5-0:amd64 (2.5.13+dfsg-5) ...
+#16 4.313 Selecting previously unselected package libnghttp2-14:amd64.
+#16 4.314 Preparing to unpack .../10-libnghttp2-14_1.52.0-1+deb12u3_amd64.deb ...
+#16 4.316 Unpacking libnghttp2-14:amd64 (1.52.0-1+deb12u3) ...
+#16 4.345 Selecting previously unselected package libpsl5:amd64.
+#16 4.346 Preparing to unpack .../11-libpsl5_0.21.2-1_amd64.deb ...
+#16 4.348 Unpacking libpsl5:amd64 (0.21.2-1) ...
+#16 4.374 Selecting previously unselected package librtmp1:amd64.
+#16 4.375 Preparing to unpack .../12-librtmp1_2.4+20151223.gitfa8646d.1-2+b2_amd64.deb ...
+#16 4.378 Unpacking librtmp1:amd64 (2.4+20151223.gitfa8646d.1-2+b2) ...
+#16 4.402 Selecting previously unselected package libssh2-1:amd64.
+#16 4.403 Preparing to unpack .../13-libssh2-1_1.10.0-3+deb12u1_amd64.deb ...
+#16 4.407 Unpacking libssh2-1:amd64 (1.10.0-3+deb12u1) ...
+#16 4.436 Selecting previously unselected package libcurl3-gnutls:amd64.
+#16 4.437 Preparing to unpack .../14-libcurl3-gnutls_7.88.1-10+deb12u15_amd64.deb ...
+#16 4.440 Unpacking libcurl3-gnutls:amd64 (7.88.1-10+deb12u15) ...
+#16 4.477 Selecting previously unselected package libexpat1:amd64.
+#16 4.477 Preparing to unpack .../15-libexpat1_2.5.0-1+deb12u5_amd64.deb ...
+#16 4.480 Unpacking libexpat1:amd64 (2.5.0-1+deb12u5) ...
+#16 4.504 Selecting previously unselected package liberror-perl.
+#16 4.505 Preparing to unpack .../16-liberror-perl_0.17029-2_all.deb ...
+#16 4.507 Unpacking liberror-perl (0.17029-2) ...
+#16 4.528 Selecting previously unselected package git-man.
+#16 4.529 Preparing to unpack .../17-git-man_1%3a2.39.5-0+deb12u3_all.deb ...
+#16 4.531 Unpacking git-man (1:2.39.5-0+deb12u3) ...
+#16 4.612 Selecting previously unselected package git.
+#16 4.612 Preparing to unpack .../18-git_1%3a2.39.5-0+deb12u3_amd64.deb ...
+#16 4.620 Unpacking git (1:2.39.5-0+deb12u3) ...
+#16 4.970 Setting up libexpat1:amd64 (2.5.0-1+deb12u5) ...
+#16 4.979 Setting up libpsl5:amd64 (0.21.2-1) ...
+#16 4.986 Setting up libbrotli1:amd64 (1.0.9-2+deb12u1) ...
+#16 4.994 Setting up libnghttp2-14:amd64 (1.52.0-1+deb12u3) ...
+#16 5.001 Setting up libsasl2-modules-db:amd64 (2.1.28+dfsg-10+deb12u1) ...
+#16 5.009 Setting up perl-modules-5.36 (5.36.0-7+deb12u4) ...
+#16 5.015 Setting up librtmp1:amd64 (2.4+20151223.gitfa8646d.1-2+b2) ...
+#16 5.022 Setting up libproc2-0:amd64 (2:4.0.2-3) ...
+#16 5.028 Setting up libgdbm-compat4:amd64 (1.23-3) ...
+#16 5.035 Setting up libsasl2-2:amd64 (2.1.28+dfsg-10+deb12u1) ...
+#16 5.041 Setting up procps (2:4.0.2-3) ...
+#16 5.078 Setting up git-man (1:2.39.5-0+deb12u3) ...
+#16 5.085 Setting up libssh2-1:amd64 (1.10.0-3+deb12u1) ...
+#16 5.091 Setting up libperl5.36:amd64 (5.36.0-7+deb12u4) ...
+#16 5.098 Setting up libldap-2.5-0:amd64 (2.5.13+dfsg-5) ...
+#16 5.108 Setting up perl (5.36.0-7+deb12u4) ...
+#16 5.123 Setting up libcurl3-gnutls:amd64 (7.88.1-10+deb12u15) ...
+#16 5.129 Setting up liberror-perl (0.17029-2) ...
+#16 5.135 Setting up git (1:2.39.5-0+deb12u3) ...
+#16 5.149 Processing triggers for libc-bin (2.36-9+deb12u14) ...
+#16 DONE 5.4s
+
+#17 [base 6/6] RUN npm install -g --no-fund --no-audit @openai/codex@0.171.0 rea-agents@6.4.0  && npm cache clean --force  && codex --version
+#17 11.31 
+#17 11.31 added 146 packages in 11s
+#17 11.31 npm notice
+#17 11.31 npm notice New major version of npm available! 11.19.1 -> 12.2.3
+#17 11.31 npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.3
+#17 11.31 npm notice To update run: npm install -g npm@12.2.3
+#17 11.31 npm notice
+#17 11.42 npm warn using --force Recommended protections disabled.
+#17 11.63 codex-cli 0.171.0
+#17 DONE 11.6s
+
+#18 [verifier  1/11] RUN useradd --create-home --uid 10001 --shell /bin/bash bench  && mkdir -p /opt/bla /bench /home/bench/.codex  && chown -R bench:bench /opt/bla /bench /home/bench/.codex
+#18 DONE 0.5s
+
+#19 [verifier  2/11] WORKDIR /opt/bla
+#19 DONE 0.0s
+
+#20 [verifier  3/11] RUN git clone --quiet https://github.com/qybaihe/bla .  && git checkout --quiet 8dcf9858f5c931e26c4d3526b29c8e10a97ec17f  && test "$(git rev-parse HEAD)" = "8dcf9858f5c931e26c4d3526b29c8e10a97ec17f"  && npm ci --no-fund --no-audit  && npm run build  && npm cache clean --force
+#20 3.316 npm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+#20 3.732 
+#20 3.732 added 131 packages in 2s
+#20 3.732 npm warn install-scripts 2 packages have install scripts not yet covered by allowScripts:
+#20 3.732 npm warn install-scripts   esbuild@0.28.2 (postinstall: node install.js)
+#20 3.732 npm warn install-scripts   esbuild@0.21.5 (postinstall: node install.js)
+#20 3.732 npm warn install-scripts
+#20 3.732 npm warn install-scripts Run `npm install-scripts ls` to review, or `npm install-scripts approve <pkg>` to allow.
+#20 3.733 npm notice
+#20 3.733 npm notice New major version of npm available! 11.19.1 -> 12.2.3
+#20 3.733 npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.3
+#20 3.733 npm notice To update run: npm install -g npm@12.2.3
+#20 3.733 npm notice
+#20 3.821 
+#20 3.821 > bla-agents@3.6.0 build
+#20 3.821 > node scripts/sync-version.mjs && tsc -p tsconfig.build.json && chmod +x dist/cli.js && node scripts/link-self-bin.mjs
+#20 3.821 
+#20 3.841 BLA_IDENTITY.version already at 3.6.0
+#20 3.842 package-lock.json already at 3.6.0
+#20 3.842 challenge/v6/SEAL.json blaVersion already at 3.6.0
+#20 3.843 challenge/v7/SEAL.json blaVersion already at 3.6.0
+#20 3.843 challenge/v8/SEAL.json blaVersion already at 3.6.0
+#20 3.843 challenge/v9/SEAL.json blaVersion already at 3.6.0
+#20 8.281 Linked 3 local bin(s) into node_modules/.bin (in-repo npx / .mcp.json)
+#20 8.351 npm warn using --force Recommended protections disabled.
+#20 DONE 8.6s
+
+#21 [verifier  4/11] WORKDIR /bench
+#21 DONE 0.1s
+
+#22 [verifier  5/11] COPY --chown=bench:bench run_once.py prompt.txt prompt-baseline.txt ./
+#22 DONE 0.0s
+
+#23 [verifier  6/11] COPY --chown=bench:bench tests ./tests
+#23 DONE 0.0s
+
+#24 [verifier  7/11] COPY --chown=bench:bench scripts ./scripts
+#24 DONE 0.0s
+
+#25 [verifier  8/11] COPY --chown=bench:bench fixtures/dx-ball ./fixtures/dx-ball
+#25 DONE 0.0s
+
+#26 [verifier  9/11] COPY --chown=bench:bench prompts ./prompts
+#26 DONE 0.0s
+
+#27 [verifier 10/11] COPY --chown=bench:bench docker/codex-config.toml /home/bench/.codex/config.toml
+#27 DONE 0.0s
+
+#28 [verifier 11/11] COPY --chown=bench:bench docker/entrypoint.sh /usr/local/bin/bench-entrypoint
+#28 DONE 0.0s
+
+#29 exporting to image
+#29 exporting layers
+#29 exporting layers 12.7s done
+#29 exporting manifest sha256:907cde926b58c25cd90dd90592e282f5a91b4dae6a3295e69701c0f926be0874 done
+#29 exporting config sha256:593f91c06121b1fdfef3981cfdc7c947183a7bf2dc9e6d6b7a2ddd07f81d7638 done
+#29 exporting attestation manifest sha256:a58127b432d15d8ccce40dc870948ef7ddf1c07508bacc1c2f0c9a2ee6cb3f11 0.0s done
+#29 exporting manifest list sha256:e76216152e698fdbb7f96f1449c71f71ec49ae94117bfaff27ef428c38fcac39 done
+#29 naming to docker.io/library/bla-bench:verifier done
+#29 unpacking to docker.io/library/bla-bench:verifier
+#29 unpacking to docker.io/library/bla-bench:verifier 5.4s done
+#29 DONE 18.2s
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 3.69kB done
+#1 DONE 0.0s
+
+#2 resolve image config for docker-image://docker.io/docker/dockerfile:1
+#2 DONE 0.7s
+
+#3 docker-image://docker.io/docker/dockerfile:1@sha256:572cebbc2b15e6f84c077742952674889cb63cd5e9b80abdffcbe587b6f19183
+#3 resolve docker.io/docker/dockerfile:1@sha256:572cebbc2b15e6f84c077742952674889cb63cd5e9b80abdffcbe587b6f19183 0.0s done
+#3 CACHED
+
+#4 [internal] load metadata for docker.io/library/node:24.22.2-bookworm-slim@sha256:01d566e8d94d8c619591d78652babfccd3c6992a3dffa9ed5ab39e11cf6c70e9
+#4 DONE 0.0s
+
+#5 [internal] load metadata for docker.io/library/python:3.12.16-slim-bookworm@sha256:44cf1793efa7c7a476bb0f2cff81443f4a072c90c1cb127e2924933daa3e8c64
+#5 DONE 0.0s
+
+#6 [internal] load .dockerignore
+#6 transferring context: 233B done
+#6 DONE 0.0s
+
+#7 [internal] load build context
+#7 transferring context: 72B done
+#7 DONE 0.0s
+
+#8 [node 1/1] FROM docker.io/library/node:24.22.2-bookworm-slim@sha256:01d566e8d94d8c619591d78652babfccd3c6992a3dffa9ed5ab39e11cf6c70e9
+#8 resolve docker.io/library/node:24.22.2-bookworm-slim@sha256:01d566e8d94d8c619591d78652babfccd3c6992a3dffa9ed5ab39e11cf6c70e9 0.0s done
+#8 DONE 0.0s
+
+#9 [base 1/6] FROM docker.io/library/python:3.12.16-slim-bookworm@sha256:44cf1793efa7c7a476bb0f2cff81443f4a072c90c1cb127e2924933daa3e8c64
+#9 resolve docker.io/library/python:3.12.16-slim-bookworm@sha256:44cf1793efa7c7a476bb0f2cff81443f4a072c90c1cb127e2924933daa3e8c64 0.0s done
+#9 DONE 0.0s
+
+#10 [base 4/6] RUN ln -s ../lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm  && ln -s ../lib/node_modules/npm/bin/npx-cli.js /usr/local/bin/npx  && node --version && npm --version
+#10 CACHED
+
+#11 [base 2/6] COPY --from=node /usr/local/bin/node /usr/local/bin/node
+#11 CACHED
+
+#12 [base 3/6] COPY --from=node /usr/local/lib/node_modules /usr/local/lib/node_modules
+#12 CACHED
+
+#13 [base 5/6] RUN apt-get update  && apt-get install -y --no-install-recommends git ca-certificates procps  && rm -rf /var/lib/apt/lists/*
+#13 CACHED
+
+#14 [base 6/6] RUN npm install -g --no-fund --no-audit @openai/codex@0.171.0 rea-agents@6.4.0  && npm cache clean --force  && codex --version
+#14 CACHED
+
+#15 [runtime 1/3] RUN useradd --create-home --uid 10001 --shell /bin/bash bench  && mkdir -p /bench /home/bench/.codex  && chown -R bench:bench /bench /home/bench/.codex
+#15 DONE 0.5s
+
+#16 [runtime 2/3] WORKDIR /bench
+#16 DONE 0.0s
+
+#17 [runtime 3/3] COPY --chown=bench:bench docker/codex-config.toml /home/bench/.codex/config.toml
+#17 DONE 0.0s
+
+#18 exporting to image
+#18 exporting layers 0.1s done
+#18 exporting manifest sha256:37c90f9a367e1fe39295ca2135b706df188b7b23787338dbb0864e4898b9bf05 done
+#18 exporting config sha256:b2c6d54a26c0db57b68fac9aac10f6d00557f32b7df5d36d1e481d35f6e17796 done
+#18 exporting attestation manifest sha256:7493a6167d7cacae32652389135463a335a444f29387f7b14f73479188f76b21 0.0s done
+#18 exporting manifest list sha256:bdf51fbf9aa2fa0c004d1a52c98d4eece09407cb4d14459ae197d9053a8e6445 done
+#18 naming to docker.io/library/bla-bench:local done
+#18 unpacking to docker.io/library/bla-bench:local 0.1s done
+#18 DONE 0.2s

@@ -1,0 +1,3 @@
+`calculateSoundPan(paddleX, ballX, screenWidth)` computes stereo pan. In `original/dx-ball-sound-pan.js:8`, `screenWidth >> 1` sets the center, the ball's offset from center is multiplied by 18, and the paddle's offset is converted to a signed 32-bit integer and shifted right by two before being added. `clampPan` bounds the sum to −10,000 through 10,000 and uses `| 0` to truncate in-range values to integers. Negative values pan left, positive values pan right, and zero is centered.
+
+REA identified the artifact as JavaScript, but its static application analyzer could not start because `ps` was unavailable on its PATH. The computation was recovered by reading the source without executing it.

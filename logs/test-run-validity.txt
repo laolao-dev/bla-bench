@@ -1,0 +1,11 @@
+test_appends_rows_without_duplicate_header (test_parse.ParseUsageTest.test_appends_rows_without_duplicate_header) ... ok
+test_invalid_mcp_failures_even_with_zero_exit_code (test_parse.ParseUsageTest.test_invalid_mcp_failures_even_with_zero_exit_code) ... ok
+test_invalid_nonzero_exit_or_timeout (test_parse.ParseUsageTest.test_invalid_nonzero_exit_or_timeout) ... ok
+test_no_usage_is_distinct_from_reported_zero (test_parse.ParseUsageTest.test_no_usage_is_distinct_from_reported_zero) ... ok
+test_sums_only_completed_turns (test_parse.ParseUsageTest.test_sums_only_completed_turns) ... ok
+test_valid_run_counts_unique_calls_and_keeps_answer_separate (test_parse.ParseUsageTest.test_valid_run_counts_unique_calls_and_keeps_answer_separate) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.005s
+
+OK

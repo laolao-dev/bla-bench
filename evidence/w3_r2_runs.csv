@@ -1,0 +1,31 @@
+run_index,round,sample,label,source_round,started_at,input_tokens,cached_input_tokens,output_tokens,elapsed_sec,exit_code,timed_out,valid,invalid_reason,rea_calls,rea_failed,commands,read_source_directly,escaped_target_dir,answer_exists,equiv_passed,equiv_score,jsonl_name,defense_score,bla_gate_note
+1,1,dx-ball,original,r1-reused,2026-11-26T16:17:02+00:00,177493,158336,1758,70.468,0,False,True,,1,0,4,True,False,True,True,12/12,20261126T161702178118+0000_dx-ball_original.jsonl,92,达标
+2,1,dx-ball,hardened,r2-clean,2026-11-27T03:50:24+00:00,319277,292480,2752,404.506,0,False,True,,2,1,8,True,False,True,True,12/12,20261127T035024721349+0000_dx-ball_hardened.jsonl,92,达标
+3,1,notion-electron,original,r1-reused,2026-11-26T16:25:00+00:00,229916,190976,2888,95.097,0,False,True,,4,1,4,True,False,True,True,12/12,20261126T162500454719+0000_notion-electron_original.jsonl,92,达标
+4,1,notion-electron,hardened,r2-clean,2026-11-27T03:57:09+00:00,605141,561536,5168,469.104,0,False,True,,3,2,15,True,False,True,True,12/12,20261127T035709869570+0000_notion-electron_hardened.jsonl,92,达标
+5,1,license-guard,original,r1-reused,2026-11-26T16:34:17+00:00,177953,160512,2202,75.890,0,False,True,,2,1,4,True,False,True,True,12/12,20261126T163417499332+0000_license-guard_original.jsonl,92,达标
+6,1,license-guard,hardened,r2-clean,2026-11-27T04:04:59+00:00,608792,526848,4360,444.896,0,False,True,,1,1,15,True,False,True,True,12/12,20261127T040459701592+0000_license-guard_hardened.jsonl,92,达标
+7,1,wasm-core,original,r1-reused,2026-11-26T16:43:08+00:00,198641,178560,1433,63.400,0,False,True,,2,2,4,True,False,True,True,12/12,20261126T164308385294+0000_wasm-core_original.jsonl,93,达标
+8,1,wasm-core,hardened,r2-clean,2026-11-27T04:12:25+00:00,405765,352000,4070,143.167,0,False,True,,2,2,11,True,False,True,True,12/12,20261127T041225208013+0000_wasm-core_hardened.jsonl,93,达标
+9,1,sqlite-db,original,r1-reused,2026-11-26T16:45:50+00:00,190772,177664,1758,72.576,0,False,True,,0,0,9,True,False,True,True,12/12,20261126T164550747373+0000_sqlite-db_original.jsonl,68,加固评分未达 BLA 默认门槛 (68/100 < 70)
+10,1,sqlite-db,hardened,r2-clean,2026-11-27T04:14:48+00:00,200255,172928,1553,65.148,0,False,True,,1,1,4,True,False,True,True,12/12,20261127T041448976791+0000_sqlite-db_hardened.jsonl,68,加固评分未达 BLA 默认门槛 (68/100 < 70)
+11,2,dx-ball,original,r1-reused,2026-11-26T16:48:23+00:00,154551,122880,1688,59.553,0,False,True,,1,0,4,True,False,True,True,12/12,20261126T164823083849+0000_dx-ball_original.jsonl,92,达标
+12,2,dx-ball,hardened,r2-clean,2026-11-27T04:15:54+00:00,451680,417408,3075,416.990,0,False,True,,1,1,12,True,False,True,True,12/12,20261127T041554828409+0000_dx-ball_hardened.jsonl,92,达标
+13,2,notion-electron,original,r1-reused,2026-11-26T16:56:10+00:00,149180,124160,2567,77.599,0,False,True,,1,0,4,True,False,True,True,12/12,20261126T165610169099+0000_notion-electron_original.jsonl,92,达标
+14,2,notion-electron,hardened,r2-clean,2026-11-27T04:22:52+00:00,712627,620544,4532,463.898,0,False,True,,3,2,14,True,False,True,True,12/12,20261127T042252436598+0000_notion-electron_hardened.jsonl,92,达标
+15,2,license-guard,original,r1-reused,2026-11-26T17:04:52+00:00,248498,208896,2808,95.707,0,False,True,,2,0,5,True,False,True,True,12/12,20261126T170452796054+0000_license-guard_original.jsonl,92,达标
+16,2,license-guard,hardened,r2-clean,2026-11-27T04:30:37+00:00,713718,662528,3343,434.587,0,False,True,,1,1,17,True,False,True,True,12/12,20261127T043037063791+0000_license-guard_hardened.jsonl,92,达标
+17,2,wasm-core,original,r1-reused,2026-11-26T17:14:02+00:00,165479,141312,1197,51.524,0,False,True,,1,1,4,True,False,True,True,12/12,20261126T171402895622+0000_wasm-core_original.jsonl,93,达标
+18,2,wasm-core,hardened,r2-clean,2026-11-27T04:37:52+00:00,359023,309504,2626,101.468,0,False,True,,2,2,8,True,False,True,True,12/12,20261127T043752250802+0000_wasm-core_hardened.jsonl,93,达标
+19,2,sqlite-db,original,r1-reused,2026-11-26T17:16:32+00:00,171631,147200,1709,62.807,0,False,True,,2,2,5,True,False,True,True,12/12,20261126T171632089744+0000_sqlite-db_original.jsonl,68,加固评分未达 BLA 默认门槛 (68/100 < 70)
+20,2,sqlite-db,hardened,r2-clean,2026-11-27T04:39:34+00:00,184414,146560,2338,79.454,0,False,True,,2,0,4,False,False,True,True,12/12,20261127T043934344763+0000_sqlite-db_hardened.jsonl,68,加固评分未达 BLA 默认门槛 (68/100 < 70)
+21,3,dx-ball,original,r1-reused,2026-11-26T17:18:52+00:00,174454,146560,1688,59.291,0,False,True,,1,0,4,True,False,True,True,12/12,20261126T171852005785+0000_dx-ball_original.jsonl,92,达标
+22,3,dx-ball,hardened,r2-clean,2026-11-27T04:40:54+00:00,383837,345088,2861,404.664,0,False,True,,1,1,12,True,False,True,True,12/12,20261127T044054517732+0000_dx-ball_hardened.jsonl,92,达标
+23,3,notion-electron,original,r1-reused,2026-11-26T17:26:20+00:00,177814,158848,2411,78.780,0,False,True,,1,0,5,True,False,True,True,12/12,20261126T172620069053+0000_notion-electron_original.jsonl,92,达标
+24,3,notion-electron,hardened,r2-clean,2026-11-27T04:47:39+00:00,533501,485376,4424,450.543,0,False,True,,2,2,14,True,False,True,True,12/12,20261127T044739798280+0000_notion-electron_hardened.jsonl,92,达标
+25,3,license-guard,original,r1-reused,2026-11-26T17:36:13+00:00,147445,135936,1959,63.190,0,False,True,,1,0,4,True,False,True,True,12/12,20261126T173613617962+0000_license-guard_original.jsonl,92,达标
+26,3,license-guard,hardened,r2-clean,2026-11-27T04:55:11+00:00,473801,436608,3532,432.466,0,False,True,,1,1,11,True,False,True,True,12/12,20261127T045511098499+0000_license-guard_hardened.jsonl,92,达标
+27,3,wasm-core,original,r1-reused,2026-11-26T17:44:15+00:00,203068,179200,1966,71.065,0,False,True,,2,2,5,True,False,True,True,12/12,20261126T174415070072+0000_wasm-core_original.jsonl,93,达标
+28,3,wasm-core,hardened,r2-clean,2026-11-27T05:02:24+00:00,251881,231168,2635,99.736,0,False,True,,1,1,7,True,False,True,True,12/12,20261127T050224238746+0000_wasm-core_hardened.jsonl,93,达标
+29,3,sqlite-db,original,r1-reused,2026-11-26T17:47:15+00:00,165580,142976,1601,59.834,0,False,True,,1,1,5,True,False,True,True,12/12,20261126T174715108622+0000_sqlite-db_original.jsonl,68,加固评分未达 BLA 默认门槛 (68/100 < 70)
+30,3,sqlite-db,hardened,r2-clean,2026-11-27T05:04:04+00:00,242179,227328,2104,85.316,0,False,True,,1,1,6,True,False,True,True,12/12,20261127T050404617803+0000_sqlite-db_hardened.jsonl,68,加固评分未达 BLA 默认门槛 (68/100 < 70)

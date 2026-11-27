@@ -1,0 +1,25 @@
+[project]
+name = "bla-bench"
+version = "0.1.0"
+description = "Independent empirical benchmark of BLA (Blind LLM Agents) against Codex + REA in isolated Docker"
+requires-python = ">=3.12"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "matplotlib>=3.9.0",
+    "pytest>=8.3.0",
+    "ruff>=0.8.0",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+extend-exclude = ["bla", "docker-work", "npm-cache", ".venv", "evidence/w3-answers", "evidence/w3-r2-answers", "targets"]
+
+[tool.ruff.format]
+quote-style = "preserve"

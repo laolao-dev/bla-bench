@@ -1,0 +1,5 @@
+﻿dx-ball: 403 B -> 170886 B (modeled 4817.7x)
+notion-electron: 1769 B -> 24671339 B (modeled 2532.3x)
+license-guard: 782 B -> 183188 B (modeled 4817.7x)
+wasm-core: 54 B -> 6880378 B (modeled 381.5x)
+sqlite-db: 12288 B -> 49152 B (modeled 152.5x)

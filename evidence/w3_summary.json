@@ -1,0 +1,829 @@
+{
+  "baseline_runs": [
+    11092,
+    11092,
+    11092
+  ],
+  "baseline_median_input_tokens": 11092,
+  "bla_default_min_defense_score": 70,
+  "total_w3_runs": 30,
+  "total_w3_input_tokens": 9178366,
+  "total_w3_output_tokens": 79006,
+  "hardened_15_input_tokens": 6445891,
+  "hardened_15_output_tokens": 49373,
+  "groups": {
+    "gate_passed": {
+      "sample_ids": [
+        "dx-ball",
+        "notion-electron",
+        "license-guard",
+        "wasm-core"
+      ],
+      "sample_count": 4,
+      "multipliers": {
+        "dx-ball": 2.28,
+        "notion-electron": 3.56,
+        "license-guard": 3.58,
+        "wasm-core": 1.86
+      },
+      "median_multiplier": 2.92,
+      "min_multiplier": 1.86,
+      "max_multiplier": 3.58,
+      "original_pass": "12/12",
+      "interception": {
+        "intercepted": 0,
+        "total": 12,
+        "rate": 0.0
+      }
+    },
+    "all_samples": {
+      "sample_ids": [
+        "dx-ball",
+        "notion-electron",
+        "license-guard",
+        "wasm-core",
+        "sqlite-db"
+      ],
+      "sample_count": 5,
+      "multipliers": {
+        "dx-ball": 2.28,
+        "notion-electron": 3.56,
+        "license-guard": 3.58,
+        "wasm-core": 1.86,
+        "sqlite-db": 1.18
+      },
+      "median_multiplier": 2.28,
+      "min_multiplier": 1.18,
+      "max_multiplier": 3.58,
+      "original_pass": "15/15",
+      "interception": {
+        "intercepted": 0,
+        "total": 15,
+        "rate": 0.0
+      }
+    }
+  },
+  "median_of_sample_multipliers": 2.28,
+  "original_pass_rate": "15/15",
+  "overall_interception": {
+    "intercepted": 0,
+    "total": 15,
+    "rate": 0.0
+  },
+  "samples": {
+    "dx-ball": {
+      "orig_median_input": 174454.0,
+      "hard_median_input": 383837.0,
+      "orig_net_input": 163362.0,
+      "hard_net_input": 372745.0,
+      "multiplier": 2.28,
+      "defense_score": 92,
+      "meets_bla_default_gate": true,
+      "bla_gate_note": "达标",
+      "orig_runs": 3,
+      "hard_runs": 3,
+      "orig_inputs": [
+        177493,
+        154551,
+        174454
+      ],
+      "hard_inputs": [
+        319277,
+        451680,
+        383837
+      ],
+      "orig_median_sec": 59.55,
+      "hard_median_sec": 404.66,
+      "orig_pass_count": 3,
+      "hard_pass_count": 3,
+      "interception": {
+        "intercepted": 0,
+        "total": 3,
+        "rate": 0.0
+      },
+      "orig_read_src_count": 3,
+      "hard_read_src_count": 3,
+      "hard_escape_count": 0,
+      "hard_timeouts": 0,
+      "bla_modeled_multiplier": 4817.7,
+      "original_bytes": 403,
+      "hardened_bytes": 170886,
+      "hardened_evidence": [
+        {
+          "jsonl_name": "20261127T035024721349+0000_dx-ball_hardened.jsonl",
+          "rea_failed_line": 9,
+          "rea_failed_tool": "rea.analyze_javascript_application",
+          "direct_parse_line": 11,
+          "direct_parse_snippet": "/bin/bash -lc \"rg -in 'pan|function main|module.exports' original | cut -c1-300 | tail -35; head -c 400 original/*.js; tail -c 1800 original/*.js\""
+        },
+        {
+          "jsonl_name": "20261127T041554828409+0000_dx-ball_hardened.jsonl",
+          "rea_failed_line": 7,
+          "rea_failed_tool": "rea.analyze_javascript_application",
+          "direct_parse_line": 9,
+          "direct_parse_snippet": "/bin/bash -lc 'head -c 600 original/*.js; echo; tail -c 4500 original/*.js'"
+        },
+        {
+          "jsonl_name": "20261127T044054517732+0000_dx-ball_hardened.jsonl",
+          "rea_failed_line": 7,
+          "rea_failed_tool": "rea.analyze_javascript_application",
+          "direct_parse_line": 9,
+          "direct_parse_snippet": "/bin/bash -lc 'f=original/dx-ball-sound-pan.js; head -c 1800 \"$f\"; echo; rg -in -o '\"'.{0,120}(stereopanner|\\\\.pan\\\\b|function main|soundpan).{0,150}'"
+        }
+      ]
+    },
+    "notion-electron": {
+      "orig_median_input": 177814.0,
+      "hard_median_input": 605141.0,
+      "orig_net_input": 166722.0,
+      "hard_net_input": 594049.0,
+      "multiplier": 3.56,
+      "defense_score": 92,
+      "meets_bla_default_gate": true,
+      "bla_gate_note": "达标",
+      "orig_runs": 3,
+      "hard_runs": 3,
+      "orig_inputs": [
+        229916,
+        149180,
+        177814
+      ],
+      "hard_inputs": [
+        605141,
+        712627,
+        533501
+      ],
+      "orig_median_sec": 78.78,
+      "hard_median_sec": 463.9,
+      "orig_pass_count": 3,
+      "hard_pass_count": 3,
+      "interception": {
+        "intercepted": 0,
+        "total": 3,
+        "rate": 0.0
+      },
+      "orig_read_src_count": 3,
+      "hard_read_src_count": 3,
+      "hard_escape_count": 0,
+      "hard_timeouts": 0,
+      "bla_modeled_multiplier": 2532.3,
+      "original_bytes": 1769,
+      "hardened_bytes": 24671339,
+      "hardened_evidence": [
+        {
+          "jsonl_name": "20261127T035709869570+0000_notion-electron_hardened.jsonl",
+          "rea_failed_line": 7,
+          "rea_failed_tool": "rea.analyze_javascript_application",
+          "direct_parse_line": 9,
+          "direct_parse_snippet": "/bin/bash -lc \"python -B - <<'PY' import struct,json with open('original/notion-clipboard.asar','rb') as f:  a,b,c,d=struct.unpack('<4I',f.read(16)); "
+        },
+        {
+          "jsonl_name": "20261127T042252436598+0000_notion-electron_hardened.jsonl",
+          "rea_failed_line": 7,
+          "rea_failed_tool": "rea.analyze_javascript_application",
+          "direct_parse_line": 9,
+          "direct_parse_snippet": "/bin/bash -lc \"python -B - <<'PY' import struct,json with open('original/notion-clipboard.asar','rb') as f:  a,b,c,d=struct.unpack('<4I',f.read(16)); "
+        },
+        {
+          "jsonl_name": "20261127T044739798280+0000_notion-electron_hardened.jsonl",
+          "rea_failed_line": 7,
+          "rea_failed_tool": "rea.analyze_javascript_application",
+          "direct_parse_line": 9,
+          "direct_parse_snippet": "/bin/bash -lc \"python - <<'PY' import struct,json with open('original/notion-clipboard.asar','rb') as f:  h=struct.unpack('<4I',f.read(16)); print(h);"
+        }
+      ]
+    },
+    "license-guard": {
+      "orig_median_input": 177953.0,
+      "hard_median_input": 608792.0,
+      "orig_net_input": 166861.0,
+      "hard_net_input": 597700.0,
+      "multiplier": 3.58,
+      "defense_score": 92,
+      "meets_bla_default_gate": true,
+      "bla_gate_note": "达标",
+      "orig_runs": 3,
+      "hard_runs": 3,
+      "orig_inputs": [
+        177953,
+        248498,
+        147445
+      ],
+      "hard_inputs": [
+        608792,
+        713718,
+        473801
+      ],
+      "orig_median_sec": 75.89,
+      "hard_median_sec": 434.59,
+      "orig_pass_count": 3,
+      "hard_pass_count": 3,
+      "interception": {
+        "intercepted": 0,
+        "total": 3,
+        "rate": 0.0
+      },
+      "orig_read_src_count": 3,
+      "hard_read_src_count": 3,
+      "hard_escape_count": 0,
+      "hard_timeouts": 0,
+      "bla_modeled_multiplier": 4817.7,
+      "original_bytes": 782,
+      "hardened_bytes": 183188,
+      "hardened_evidence": [
+        {
+          "jsonl_name": "20261127T040459701592+0000_license-guard_hardened.jsonl",
+          "rea_failed_line": 7,
+          "rea_failed_tool": "rea.analyze_javascript_application",
+          "direct_parse_line": 9,
+          "direct_parse_snippet": "/bin/bash -lc 'head -c 1000 original/license-validator.js; echo; tail -c 2500 original/license-validator.js'"
+        },
+        {
+          "jsonl_name": "20261127T043037063791+0000_license-guard_hardened.jsonl",
+          "rea_failed_line": 7,
+          "rea_failed_tool": "rea.analyze_javascript_application",
+          "direct_parse_line": 9,
+          "direct_parse_snippet": "/bin/bash -lc 'head -c 2200 original/*; echo; tail -c 4200 original/*'"
+        },
+        {
+          "jsonl_name": "20261127T045511098499+0000_license-guard_hardened.jsonl",
+          "rea_failed_line": 7,
+          "rea_failed_tool": "rea.analyze_javascript_application",
+          "direct_parse_line": 9,
+          "direct_parse_snippet": "/bin/bash -lc 'head -c 1500 original/*; echo; tail -c 4500 original/*'"
+        }
+      ]
+    },
+    "wasm-core": {
+      "orig_median_input": 198641.0,
+      "hard_median_input": 359023.0,
+      "orig_net_input": 187549.0,
+      "hard_net_input": 347931.0,
+      "multiplier": 1.86,
+      "defense_score": 93,
+      "meets_bla_default_gate": true,
+      "bla_gate_note": "达标",
+      "orig_runs": 3,
+      "hard_runs": 3,
+      "orig_inputs": [
+        198641,
+        165479,
+        203068
+      ],
+      "hard_inputs": [
+        405765,
+        359023,
+        251881
+      ],
+      "orig_median_sec": 63.4,
+      "hard_median_sec": 101.47,
+      "orig_pass_count": 3,
+      "hard_pass_count": 3,
+      "interception": {
+        "intercepted": 0,
+        "total": 3,
+        "rate": 0.0
+      },
+      "orig_read_src_count": 3,
+      "hard_read_src_count": 3,
+      "hard_escape_count": 0,
+      "hard_timeouts": 0,
+      "bla_modeled_multiplier": 381.5,
+      "original_bytes": 54,
+      "hardened_bytes": 6880378,
+      "hardened_evidence": [
+        {
+          "jsonl_name": "20261127T041225208013+0000_wasm-core_hardened.jsonl",
+          "rea_failed_line": 7,
+          "rea_failed_tool": "rea.inspect_binary_layout",
+          "direct_parse_line": 13,
+          "direct_parse_snippet": "/bin/bash -lc 'xxd -l 48 original/*; command -v wasm2wat wasm-objdump node; strings -n 8 original/* | head -70'"
+        },
+        {
+          "jsonl_name": "20261127T043752250802+0000_wasm-core_hardened.jsonl",
+          "rea_failed_line": 7,
+          "rea_failed_tool": "rea.inspect_binary_layout",
+          "direct_parse_line": 11,
+          "direct_parse_snippet": "/bin/bash -lc 'command -v wasm2wat wasm-objdump node python3; xxd -l 40 original/crypto-core.wasm; strings -n 12 original/crypto-core.wasm | head -45'"
+        },
+        {
+          "jsonl_name": "20261127T050224238746+0000_wasm-core_hardened.jsonl",
+          "rea_failed_line": 7,
+          "rea_failed_tool": "rea.open_binary",
+          "direct_parse_line": 9,
+          "direct_parse_snippet": "/bin/bash -lc \"xxd -l 64 original/*; command -v wasm2wat wasm-objdump node; strings -n 8 original/* | grep -Ei 'main|crypto|flag' | cut -c1-200 | head"
+        }
+      ]
+    },
+    "sqlite-db": {
+      "orig_median_input": 171631.0,
+      "hard_median_input": 200255.0,
+      "orig_net_input": 160539.0,
+      "hard_net_input": 189163.0,
+      "multiplier": 1.18,
+      "defense_score": 68,
+      "meets_bla_default_gate": false,
+      "bla_gate_note": "加固评分未达 BLA 默认门槛 (68/100 < 70)",
+      "orig_runs": 3,
+      "hard_runs": 3,
+      "orig_inputs": [
+        190772,
+        171631,
+        165580
+      ],
+      "hard_inputs": [
+        200255,
+        184414,
+        242179
+      ],
+      "orig_median_sec": 62.81,
+      "hard_median_sec": 79.45,
+      "orig_pass_count": 3,
+      "hard_pass_count": 3,
+      "interception": {
+        "intercepted": 0,
+        "total": 3,
+        "rate": 0.0
+      },
+      "orig_read_src_count": 3,
+      "hard_read_src_count": 2,
+      "hard_escape_count": 0,
+      "hard_timeouts": 0,
+      "bla_modeled_multiplier": 152.5,
+      "original_bytes": 12288,
+      "hardened_bytes": 49152,
+      "hardened_evidence": [
+        {
+          "jsonl_name": "20261127T041448976791+0000_sqlite-db_hardened.jsonl",
+          "rea_failed_line": 7,
+          "rea_failed_tool": "rea.open_binary",
+          "direct_parse_line": 9,
+          "direct_parse_snippet": "/bin/bash -lc \"python - <<'PY' import sqlite3 c=sqlite3.connect('file:original/entitlements.sqlite?mode=ro&immutable=1',uri=True); print(c.execute('pr"
+        },
+        {
+          "jsonl_name": "20261127T043934344763+0000_sqlite-db_hardened.jsonl",
+          "rea_failed_line": null,
+          "rea_failed_tool": null,
+          "direct_parse_line": null,
+          "direct_parse_snippet": null
+        },
+        {
+          "jsonl_name": "20261127T050404617803+0000_sqlite-db_hardened.jsonl",
+          "rea_failed_line": 7,
+          "rea_failed_tool": "rea.open_binary",
+          "direct_parse_line": 9,
+          "direct_parse_snippet": "/bin/bash -lc \"python -B - <<'PY' import sqlite3 p='file:original/entitlements.sqlite?mode=ro&immutable=1' c=sqlite3.connect(p,uri=True); c.execute('p"
+        }
+      ]
+    }
+  },
+  "active_round": "round2_clean_isolated",
+  "round1_summary": {
+    "baseline_runs": [
+      11092,
+      11092,
+      11092
+    ],
+    "baseline_median_input_tokens": 11092,
+    "bla_default_min_defense_score": 70,
+    "total_w3_runs": 30,
+    "total_w3_input_tokens": 9013746,
+    "total_w3_output_tokens": 79417,
+    "hardened_15_input_tokens": 6281271,
+    "hardened_15_output_tokens": 49784,
+    "groups": {
+      "gate_passed": {
+        "sample_ids": [
+          "dx-ball",
+          "notion-electron",
+          "license-guard",
+          "wasm-core"
+        ],
+        "sample_count": 4,
+        "multipliers": {
+          "dx-ball": 2.2,
+          "notion-electron": 3.21,
+          "license-guard": 3.13,
+          "wasm-core": 1.54
+        },
+        "median_multiplier": 2.67,
+        "min_multiplier": 1.54,
+        "max_multiplier": 3.21,
+        "original_pass": "12/12",
+        "interception": {
+          "intercepted": 0,
+          "total": 12,
+          "rate": 0.0
+        }
+      },
+      "all_samples": {
+        "sample_ids": [
+          "dx-ball",
+          "notion-electron",
+          "license-guard",
+          "wasm-core",
+          "sqlite-db"
+        ],
+        "sample_count": 5,
+        "multipliers": {
+          "dx-ball": 2.2,
+          "notion-electron": 3.21,
+          "license-guard": 3.13,
+          "wasm-core": 1.54,
+          "sqlite-db": 1.23
+        },
+        "median_multiplier": 2.2,
+        "min_multiplier": 1.23,
+        "max_multiplier": 3.21,
+        "original_pass": "15/15",
+        "interception": {
+          "intercepted": 0,
+          "total": 15,
+          "rate": 0.0
+        }
+      }
+    },
+    "median_of_sample_multipliers": 2.2,
+    "original_pass_rate": "15/15",
+    "overall_interception": {
+      "intercepted": 0,
+      "total": 15,
+      "rate": 0.0
+    },
+    "samples": {
+      "dx-ball": {
+        "orig_median_input": 174454.0,
+        "hard_median_input": 370423.0,
+        "orig_net_input": 163362.0,
+        "hard_net_input": 359331.0,
+        "multiplier": 2.2,
+        "defense_score": 92,
+        "meets_bla_default_gate": true,
+        "bla_gate_note": "达标",
+        "orig_runs": 3,
+        "hard_runs": 3,
+        "orig_inputs": [
+          177493,
+          154551,
+          174454
+        ],
+        "hard_inputs": [
+          423593,
+          370423,
+          316689
+        ],
+        "orig_median_sec": 59.55,
+        "hard_median_sec": 404.96,
+        "orig_pass_count": 3,
+        "hard_pass_count": 3,
+        "interception": {
+          "intercepted": 0,
+          "total": 3,
+          "rate": 0.0
+        },
+        "orig_read_src_count": 3,
+        "hard_read_src_count": 3,
+        "hard_escape_count": 0,
+        "hard_timeouts": 0,
+        "bla_modeled_multiplier": 4817.7,
+        "original_bytes": 403,
+        "hardened_bytes": 170886,
+        "hardened_evidence": [
+          {
+            "jsonl_name": "20261126T161813897033+0000_dx-ball_hardened.jsonl",
+            "rea_failed_line": 7,
+            "rea_failed_tool": "rea.analyze_javascript_application",
+            "direct_parse_line": 9,
+            "direct_parse_snippet": "/bin/bash -lc 'wc -l original/*; head -c 1600 original/*; echo; tail -c 4200 original/*'"
+          },
+          {
+            "jsonl_name": "20261126T164923945597+0000_dx-ball_hardened.jsonl",
+            "rea_failed_line": 7,
+            "rea_failed_tool": "rea.analyze_javascript_application",
+            "direct_parse_line": 9,
+            "direct_parse_snippet": "/bin/bash -lc \"wc -l original/*; head -c 1200 original/*; tail -c 3500 original/*; rg -in -o '.{0,100}(stereopanner|soundpan|function main|module.expo"
+          },
+          {
+            "jsonl_name": "20261126T171952661992+0000_dx-ball_hardened.jsonl",
+            "rea_failed_line": 7,
+            "rea_failed_tool": "rea.analyze_javascript_application",
+            "direct_parse_line": 9,
+            "direct_parse_snippet": "/bin/bash -lc \"head -c 1300 original/*; tail -c 3200 original/*; rg -n -i 'function main|soundpan|stereopan|module.exports' original | cut -c1-300\""
+          }
+        ]
+      },
+      "notion-electron": {
+        "orig_median_input": 177814.0,
+        "hard_median_input": 545882.0,
+        "orig_net_input": 166722.0,
+        "hard_net_input": 534790.0,
+        "multiplier": 3.21,
+        "defense_score": 92,
+        "meets_bla_default_gate": true,
+        "bla_gate_note": "达标",
+        "orig_runs": 3,
+        "hard_runs": 3,
+        "orig_inputs": [
+          229916,
+          149180,
+          177814
+        ],
+        "hard_inputs": [
+          527963,
+          545882,
+          924094
+        ],
+        "orig_median_sec": 78.78,
+        "hard_median_sec": 459.11,
+        "orig_pass_count": 3,
+        "hard_pass_count": 3,
+        "interception": {
+          "intercepted": 0,
+          "total": 3,
+          "rate": 0.0
+        },
+        "orig_read_src_count": 3,
+        "hard_read_src_count": 3,
+        "hard_escape_count": 0,
+        "hard_timeouts": 0,
+        "bla_modeled_multiplier": 2532.3,
+        "original_bytes": 1769,
+        "hardened_bytes": 24671339,
+        "hardened_evidence": [
+          {
+            "jsonl_name": "20261126T162636989478+0000_notion-electron_hardened.jsonl",
+            "rea_failed_line": 7,
+            "rea_failed_tool": "rea.analyze_javascript_application",
+            "direct_parse_line": 9,
+            "direct_parse_snippet": "/bin/bash -lc 'xxd -l 96 original/notion-clipboard.asar; file original/notion-clipboard.asar'"
+          },
+          {
+            "jsonl_name": "20261126T165729311494+0000_notion-electron_hardened.jsonl",
+            "rea_failed_line": 7,
+            "rea_failed_tool": "rea.analyze_javascript_application",
+            "direct_parse_line": 9,
+            "direct_parse_snippet": "/bin/bash -lc \"python - <<'PY' import struct,json from pathlib import Path with Path('original/notion-clipboard.asar').open('rb') as f:  h=struct.unpa"
+          },
+          {
+            "jsonl_name": "20261126T172740166690+0000_notion-electron_hardened.jsonl",
+            "rea_failed_line": 7,
+            "rea_failed_tool": "rea.analyze_javascript_application",
+            "direct_parse_line": 9,
+            "direct_parse_snippet": "/bin/bash -lc \"python - <<'PY' import struct with open('original/notion-clipboard.asar','rb') as f:  b=f.read(128);print(b);print(struct.unpack('<4I',"
+          }
+        ]
+      },
+      "license-guard": {
+        "orig_median_input": 177953.0,
+        "hard_median_input": 533595.0,
+        "orig_net_input": 166861.0,
+        "hard_net_input": 522503.0,
+        "multiplier": 3.13,
+        "defense_score": 92,
+        "meets_bla_default_gate": true,
+        "bla_gate_note": "达标",
+        "orig_runs": 3,
+        "hard_runs": 3,
+        "orig_inputs": [
+          177953,
+          248498,
+          147445
+        ],
+        "hard_inputs": [
+          542808,
+          533595,
+          526028
+        ],
+        "orig_median_sec": 75.89,
+        "hard_median_sec": 451.8,
+        "orig_pass_count": 3,
+        "hard_pass_count": 3,
+        "interception": {
+          "intercepted": 0,
+          "total": 3,
+          "rate": 0.0
+        },
+        "orig_read_src_count": 3,
+        "hard_read_src_count": 3,
+        "hard_escape_count": 0,
+        "hard_timeouts": 0,
+        "bla_modeled_multiplier": 4817.7,
+        "original_bytes": 782,
+        "hardened_bytes": 183188,
+        "hardened_evidence": [
+          {
+            "jsonl_name": "20261126T163534629311+0000_license-guard_hardened.jsonl",
+            "rea_failed_line": 7,
+            "rea_failed_tool": "rea.analyze_javascript_application",
+            "direct_parse_line": 9,
+            "direct_parse_snippet": "/bin/bash -lc 'head -c 1200 original/*; echo; tail -c 5500 original/*'"
+          },
+          {
+            "jsonl_name": "20261126T170629864123+0000_license-guard_hardened.jsonl",
+            "rea_failed_line": 7,
+            "rea_failed_tool": "rea.analyze_javascript_application",
+            "direct_parse_line": 9,
+            "direct_parse_snippet": "/bin/bash -lc \"head -c 1200 original/license-validator.js; printf '\\\\n---\\\\n'; tail -c 5500 original/license-validator.js\""
+          },
+          {
+            "jsonl_name": "20261126T173717981098+0000_license-guard_hardened.jsonl",
+            "rea_failed_line": 7,
+            "rea_failed_tool": "rea.recover_javascript_sources",
+            "direct_parse_line": 11,
+            "direct_parse_snippet": "/bin/bash -lc 'head -c 1200 original/*; echo; tail -c 3500 original/*'"
+          }
+        ]
+      },
+      "wasm-core": {
+        "orig_median_input": 198641.0,
+        "hard_median_input": 300269.0,
+        "orig_net_input": 187549.0,
+        "hard_net_input": 289177.0,
+        "multiplier": 1.54,
+        "defense_score": 93,
+        "meets_bla_default_gate": true,
+        "bla_gate_note": "达标",
+        "orig_runs": 3,
+        "hard_runs": 3,
+        "orig_inputs": [
+          198641,
+          165479,
+          203068
+        ],
+        "hard_inputs": [
+          282091,
+          300269,
+          372533
+        ],
+        "orig_median_sec": 63.4,
+        "hard_median_sec": 96.55,
+        "orig_pass_count": 3,
+        "hard_pass_count": 3,
+        "interception": {
+          "intercepted": 0,
+          "total": 3,
+          "rate": 0.0
+        },
+        "orig_read_src_count": 3,
+        "hard_read_src_count": 3,
+        "hard_escape_count": 0,
+        "hard_timeouts": 0,
+        "bla_modeled_multiplier": 381.5,
+        "original_bytes": 54,
+        "hardened_bytes": 6880378,
+        "hardened_evidence": [
+          {
+            "jsonl_name": "20261126T164413000953+0000_wasm-core_hardened.jsonl",
+            "rea_failed_line": 7,
+            "rea_failed_tool": "rea.open_jeb_project",
+            "direct_parse_line": 11,
+            "direct_parse_snippet": "/bin/bash -lc \"command -v wasm2wat wasm-objdump node python3 strings; strings original/crypto-core.wasm | rg -i 'main|crypto|flag' | cut -c1-200 | hea"
+          },
+          {
+            "jsonl_name": "20261126T171455854538+0000_wasm-core_hardened.jsonl",
+            "rea_failed_line": 7,
+            "rea_failed_tool": "rea.procedure_pseudo_code",
+            "direct_parse_line": 12,
+            "direct_parse_snippet": "/bin/bash -lc \"command -v wasm2wat wasm-objdump node; xxd -l 24 original/crypto-core.wasm; strings -n 10 original/crypto-core.wasm | rg -i 'main|hash|"
+          },
+          {
+            "jsonl_name": "20261126T174527342235+0000_wasm-core_hardened.jsonl",
+            "rea_failed_line": 7,
+            "rea_failed_tool": "rea.inspect_binary_layout",
+            "direct_parse_line": 14,
+            "direct_parse_snippet": "/bin/bash -lc 'command -v wasm-objdump wasm2wat node; strings -n 8 original/crypto-core.wasm | head -65; xxd -l 32 original/crypto-core.wasm'"
+          }
+        ]
+      },
+      "sqlite-db": {
+        "orig_median_input": 171631.0,
+        "hard_median_input": 208006.0,
+        "orig_net_input": 160539.0,
+        "hard_net_input": 196914.0,
+        "multiplier": 1.23,
+        "defense_score": 68,
+        "meets_bla_default_gate": false,
+        "bla_gate_note": "加固评分未达 BLA 默认门槛 (68/100 < 70)",
+        "orig_runs": 3,
+        "hard_runs": 3,
+        "orig_inputs": [
+          190772,
+          171631,
+          165580
+        ],
+        "hard_inputs": [
+          208006,
+          188572,
+          218725
+        ],
+        "orig_median_sec": 62.81,
+        "hard_median_sec": 76.61,
+        "orig_pass_count": 3,
+        "hard_pass_count": 3,
+        "interception": {
+          "intercepted": 0,
+          "total": 3,
+          "rate": 0.0
+        },
+        "orig_read_src_count": 3,
+        "hard_read_src_count": 3,
+        "hard_escape_count": 0,
+        "hard_timeouts": 0,
+        "bla_modeled_multiplier": 152.5,
+        "original_bytes": 12288,
+        "hardened_bytes": 49152,
+        "hardened_evidence": [
+          {
+            "jsonl_name": "20261126T164704800575+0000_sqlite-db_hardened.jsonl",
+            "rea_failed_line": 7,
+            "rea_failed_tool": "rea.open_binary",
+            "direct_parse_line": 9,
+            "direct_parse_snippet": "/bin/bash -lc \"python -B - <<'PY' import sqlite3 c=sqlite3.connect('file:original/entitlements.sqlite?mode=ro&immutable=1',uri=True) for r in c.execut"
+          },
+          {
+            "jsonl_name": "20261126T171736387282+0000_sqlite-db_hardened.jsonl",
+            "rea_failed_line": 7,
+            "rea_failed_tool": "rea.open_binary",
+            "direct_parse_line": 10,
+            "direct_parse_snippet": "/bin/bash -lc \"python -B - <<'PY' import sqlite3 c=sqlite3.connect('file:original/entitlements.sqlite?mode=ro&immutable=1',uri=True) c.execute('pragma"
+          },
+          {
+            "jsonl_name": "20261126T174816152611+0000_sqlite-db_hardened.jsonl",
+            "rea_failed_line": 7,
+            "rea_failed_tool": "rea.open_binary",
+            "direct_parse_line": 9,
+            "direct_parse_snippet": "/bin/bash -lc \"python -B - <<'PY' import sqlite3 c=sqlite3.connect('file:original/entitlements.sqlite?mode=ro&immutable=1',uri=True) c.execute('pragma"
+          }
+        ]
+      }
+    }
+  },
+  "round1_vs_round2": {
+    "gate_passed_r1_median": 2.67,
+    "gate_passed_r2_median": 2.92,
+    "all_samples_r1_median": 2.2,
+    "all_samples_r2_median": 2.28,
+    "r1_interception": {
+      "intercepted": 0,
+      "total": 15,
+      "rate": 0.0
+    },
+    "r2_interception": {
+      "intercepted": 0,
+      "total": 15,
+      "rate": 0.0
+    },
+    "per_sample": {
+      "dx-ball": {
+        "r1_hard_median_input": 370423.0,
+        "r2_hard_median_input": 383837.0,
+        "r1_multiplier": 2.2,
+        "r2_multiplier": 2.28,
+        "abs_diff": 0.08,
+        "rel_diff_pct": 3.6,
+        "r1_interception": "0/3",
+        "r2_interception": "0/3"
+      },
+      "notion-electron": {
+        "r1_hard_median_input": 545882.0,
+        "r2_hard_median_input": 605141.0,
+        "r1_multiplier": 3.21,
+        "r2_multiplier": 3.56,
+        "abs_diff": 0.35,
+        "rel_diff_pct": 10.9,
+        "r1_interception": "0/3",
+        "r2_interception": "0/3"
+      },
+      "license-guard": {
+        "r1_hard_median_input": 533595.0,
+        "r2_hard_median_input": 608792.0,
+        "r1_multiplier": 3.13,
+        "r2_multiplier": 3.58,
+        "abs_diff": 0.45,
+        "rel_diff_pct": 14.4,
+        "r1_interception": "0/3",
+        "r2_interception": "0/3"
+      },
+      "wasm-core": {
+        "r1_hard_median_input": 300269.0,
+        "r2_hard_median_input": 359023.0,
+        "r1_multiplier": 1.54,
+        "r2_multiplier": 1.86,
+        "abs_diff": 0.32,
+        "rel_diff_pct": 20.8,
+        "r1_interception": "0/3",
+        "r2_interception": "0/3"
+      },
+      "sqlite-db": {
+        "r1_hard_median_input": 208006.0,
+        "r2_hard_median_input": 200255.0,
+        "r1_multiplier": 1.23,
+        "r2_multiplier": 1.18,
+        "abs_diff": -0.05,
+        "rel_diff_pct": -4.1,
+        "r1_interception": "0/3",
+        "r2_interception": "0/3"
+      }
+    }
+  }
+}

@@ -1,0 +1,1 @@
+Use the REA tools to analyze the artifact in ./original. Determine what its main function computes, write an equivalent Python function to ./answer.py, and explain your evidence briefly in ./answer.md. Do not access files outside this directory.

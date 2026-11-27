@@ -1,0 +1,51 @@
+=== 1. Container Identity ===
+uid/gid: 10001 10001
+cwd: /bench/targets/dx-ball
+
+=== 2. Forbidden Paths Absence Check ===
+  /opt/bla: ABSENT (OK)
+  /bench/tests: ABSENT (OK)
+  /bench/scripts: ABSENT (OK)
+  /bench/fixtures: ABSENT (OK)
+  /bench/runs: ABSENT (OK)
+  /bench/results.csv: ABSENT (OK)
+  /bench/run_once.py: ABSENT (OK)
+  /bench/prompts: ABSENT (OK)
+  /bench/prompt.txt: ABSENT (OK)
+  /bench/prompt-baseline.txt: ABSENT (OK)
+
+=== 3. All Readable Files Under /bench, /opt, /home/bench, /tmp, /var/tmp, /srv ===
+  /bench/targets/dx-ball/original/dx-ball-sound-pan.js (size=170886, readable=True)
+  /home/bench/.bash_logout (size=220, readable=True)
+  /home/bench/.bashrc (size=3526, readable=True)
+  /home/bench/.profile (size=807, readable=True)
+  /home/bench/.codex/auth.json (size=119, readable=True)
+  /home/bench/.codex/config.toml (size=751, readable=True)
+  /home/bench/.codex/cpa-gui-model-catalog.json (size=3704293, readable=True)
+
+=== 4. Global Installed Node Packages (/usr/local/lib/node_modules) ===
+  @openai/codex
+  corepack
+  npm
+  rea-agents
+
+=== 5. Full Filesystem Filename Audit (All Readable Non-OS-Library Paths & Forbidden Patterns) ===
+Total bench-readable files across entire container /: 16442
+Readable files outside standard OS/Python/Node/Codex/REA system paths (12):
+  /.dockerenv
+  /bench/targets/dx-ball/original/dx-ball-sound-pan.js
+  /home/bench/.bash_logout
+  /home/bench/.bashrc
+  /home/bench/.profile
+  /home/bench/.codex/auth.json
+  /home/bench/.codex/config.toml
+  /home/bench/.codex/cpa-gui-model-catalog.json
+  /usr/lib64/ld-linux-x86-64.so.2
+  /usr/local/lib/libpython3.12.so
+  /usr/local/lib/libpython3.12.so.1.0
+  /usr/local/lib/libpython3.so
+
+=== 6. Content Leak Scan Under /bench and /home/bench ===
+
+=== 7. Verdict ===
+STATUS: CLEAN (0 violations; only hardened target artifact and REA/Codex runtime are accessible)

@@ -1,0 +1,17 @@
+# Python 虚拟环境与测试缓存
+.venv/
+.pytest_cache/
+.ruff_cache/
+# 第三方仓库（独立 git，固定 commit 8dcf9858f5c931e26c4d3526b29c8e10a97ec17f）与缓存
+bla/
+npm-cache/
+tmp/node-compile-cache/
+__pycache__/
+*.pyc
+# 容器运行时工作区与按固定种子生成的体积较大加固产物（由清单校验 SHA-256）
+docker-work/
+targets/*/hardened/
+# 凭据防线
+auth.json
+*.token
+.env

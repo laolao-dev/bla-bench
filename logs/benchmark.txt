@@ -1,0 +1,27 @@
+[1m[36m╔══════════════════════════════════════════════════════════════════════════════╗[0m
+[1m[36m║  🛡️  BLA: Blind LLM Agents (bla-agents v3.6.0)                             ║[0m
+[1m[36m║  [33mPoison -> Exhaust -> Hallucinate. Make Reverse Engineering Bankrupt Again.[36m  ║[0m
+[1m[36m╚══════════════════════════════════════════════════════════════════════════════╝[0m
+
+[1m[35m⚡ BLA vs. REA — 16-Target Counter-Showcase Benchmark Suite[0m
+
+[1mShowcase Target                          | Before BLA (REA Alone)        | After BLA Shield (Poison + Tarpit)       | Token Mult | Runtime Check[0m
+─────────────────────────────────────────┼───────────────────────────────┼──────────────────────────────────────────┼────────────┼──────────────
+DX-Ball Sound-Pan Calculation            | 84/100 |  4,800 tok | $ 0.20  | [32m 2/100 | 23,125,000 tok | $358.71 | LIMITED[0m | [33m[1m 4817.7x[0m   | [32m✓ 100% EXACT[0m
+Notion Electron Clipboard Bridge (.asar) | 98/100 |  9,132 tok | $ 0.34  | [32m 2/100 | 23,125,000 tok | $365.34 | LIMITED[0m | [33m[1m 2532.3x[0m   | [32m✓ 100% EXACT[0m
+Enterprise License & Crypto Validator    | 87/100 |  4,800 tok | $ 0.20  | [32m 2/100 | 23,125,000 tok | $358.71 | LIMITED[0m | [33m[1m 4817.7x[0m   | [32m✓ 100% EXACT[0m
+WebAssembly Crypto Kernel (.wasm)        | 81/100 |  4,800 tok | $ 0.20  | [32m 6/100 | 1,831,000 tok | $ 30.23 | LIMITED[0m | [33m[1m  381.5x[0m   | [32m✓ 100% EXACT[0m
+Native ELF64 Rust/Go/Electron/Dart Binary | 81/100 | 35,222 tok | $ 0.73  | [32m 2/100 | 3,718,600 tok | $ 60.03 | LIMITED[0m | [33m[1m  105.6x[0m   | [32m✓ 100% EXACT[0m
+Local SQLite Entitlement Database (.sqlite) | 81/100 | 10,568 tok | $ 0.29  | [32m 9/100 | 1,611,335 tok | $ 26.74 | LIMITED[0m | [33m[1m  152.5x[0m   | [32m✓ 100% EXACT[0m
+Proprietary Edge AI Model (.safetensors) | 81/100 |  4,800 tok | $ 0.20  | [32m 6/100 | 1,808,590 tok | $ 29.90 | LIMITED[0m | [33m[1m  376.8x[0m   | [32m✓ 100% EXACT[0m
+Android Dalvik Bytecode (classes.dex)    | 81/100 |  8,900 tok | $ 0.34  | [32m 7/100 | 13,443,668 tok | $209.39 | LIMITED[0m | [33m[1m 1510.5x[0m   | [32m✓ 100% EXACT[0m
+Apple Bundle PropertyList (Info.plist)   | 81/100 |  6,440 tok | $ 0.26  | [32m 8/100 | 1,680,749 tok | $ 27.85 | LIMITED[0m | [33m[1m    261x[0m   | [32m✓ 100% EXACT[0m
+.NET Managed CLR Assembly (.dll)         | 81/100 |  8,900 tok | $ 0.34  | [32m 6/100 | 2,014,445 tok | $ 33.22 | LIMITED[0m | [33m[1m  226.3x[0m   | [32m✓ 100% EXACT[0m
+Erlang/OTP BEAM Module (.beam)           | 81/100 |  8,900 tok | $ 0.34  | [32m 5/100 | 3,855,400 tok | $ 62.08 | LIMITED[0m | [33m[1m  433.2x[0m   | [32m✓ 100% EXACT[0m
+EVM Contract Bytecode (Solidity metadata) | 81/100 |  6,440 tok | $ 0.26  | [32m 6/100 | 1,779,400 tok | $ 29.40 | LIMITED[0m | [33m[1m  276.3x[0m   | [32m✓ 100% EXACT[0m
+libpcap Network Capture (.pcap)          | 81/100 |  4,800 tok | $ 0.20  | [32m 7/100 | 23,125,000 tok | $359.51 | LIMITED[0m | [33m[1m 4817.7x[0m   | [32m✓ 100% EXACT[0m
+NVIDIA PTX Text Module (.ptx)            | 81/100 |  4,800 tok | $ 0.20  | [32m 7/100 | 23,106,985 tok | $358.20 | LIMITED[0m | [33m[1m   4814x[0m   | [32m✓ 100% EXACT[0m
+JavaScript Entitlement String Table (.js) | 81/100 |  4,964 tok | $ 0.19  | [32m 2/100 | 23,125,000 tok | $358.71 | LIMITED[0m | [33m[1m 4658.5x[0m   | [32m✓ 100% EXACT[0m
+GGUF Model Metadata (.gguf)              | 81/100 |  4,800 tok | $ 0.20  | [32m 8/100 | 1,653,019 tok | $ 27.39 | LIMITED[0m | [33m[1m  344.4x[0m   | [32m✓ 100% EXACT[0m
+─────────────────────────────────────────┴───────────────────────────────┴──────────────────────────────────────────┴────────────┴──────────────
+[1mAggregate Token Amplification:[0m [33m[1m1293.6x[0m   |   [1mAggregate Cost Multiplier:[0m [33m[1m600.3x[0m   |   [32mAll 16 runtime checks passed[0m

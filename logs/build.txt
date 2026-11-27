@@ -1,0 +1,11 @@
+
+> bla-agents@3.6.0 build
+> node scripts/sync-version.mjs && tsc -p tsconfig.build.json && chmod +x dist/cli.js && node scripts/link-self-bin.mjs
+
+BLA_IDENTITY.version already at 3.6.0
+package-lock.json already at 3.6.0
+challenge/v6/SEAL.json blaVersion already at 3.6.0
+challenge/v7/SEAL.json blaVersion already at 3.6.0
+challenge/v8/SEAL.json blaVersion already at 3.6.0
+challenge/v9/SEAL.json blaVersion already at 3.6.0
+Linked 3 local bin(s) into node_modules/.bin (in-repo npx / .mcp.json)

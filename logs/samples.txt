@@ -1,0 +1,11 @@
+file:///<REPO_ROOT>/tmp/materialize-originals.mjs:11
+  throw new Error(`Unexpected benchmark cases: ${blocks.map(block => block[1]).join(', ')}`);
+        ^
+
+Error: Unexpected benchmark cases: 1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16
+    at file:///<REPO_ROOT>/tmp/materialize-originals.mjs:11:9
+    at ModuleJob.run (node:internal/modules/esm/module_job:561:25)
+    at async node:internal/modules/esm/loader:647:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.22.2

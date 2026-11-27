@@ -1,0 +1,13 @@
+# 默认全排除，只放行镜像需要的文件
+*
+!Dockerfile
+!run_once.py
+!prompt.txt
+!prompt-baseline.txt
+!prompts/
+!tests/
+!scripts/
+!docker/
+!fixtures/dx-ball/
+**/__pycache__
+**/*.pyc

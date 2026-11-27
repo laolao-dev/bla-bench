@@ -1,0 +1,24 @@
+# 容器专用的最小 Codex 配置。不含任何密钥。
+# 凭据来自运行时只读挂载的 $CODEX_HOME/auth.json（requires_openai_auth = true）。
+model = "gpt-6.2-sol"
+model_reasoning_effort = "low"
+model_provider = "cpa-gui"
+model_catalog_json = "cpa-gui-model-catalog.json"
+approval_policy = "never"
+
+[model_providers.cpa-gui]
+name = "Local Relay Proxy"
+# bench 容器在 --internal 网络里，只能经中继容器 bla-relay 到达本机 127.0.0.1:8317 的模型代理
+base_url = "http://bla-relay:8317/v1"
+wire_api = "responses"
+requires_openai_auth = true
+
+[features]
+js_repl = false
+memories = false
+
+# 只有 REA 一个 MCP 服务，预装在镜像里
+[mcp_servers.rea]
+command = "rea-agents"
+args = ["mcp"]
+startup_timeout_sec = 30

@@ -1,0 +1,5 @@
+`calculate_sound_pan(ball_x, paddle_x, field_width)` returns a stereo pan from −10,000 (left) to +10,000 (right), with 0 centered. It computes `center = field_width >> 1` and `raw = 18 * (paddle_x - center) + ((ball_x - center) >> 2)` using JavaScript signed 32-bit shift semantics, then clamps and truncates `raw` toward zero.
+
+In `original/dx-ball-sound-pan.js:919`, `calculateSoundPan` maps to the function at line 862, which computes the offsets and calls the clamp helper at line 805. The bundled digest evaluates to `1670421233`, making the runtime seed odd. Argument-derived seed bits are shifted left by eight, so they do not affect the low-three-bit predicates. The selected `Math.imul` expressions reduce to the multiplier `18` and the clamp limits `±10000`. The cursor bookkeeping does not feed into the returned pan.
+
+REA's static application analysis timed out. I checked the reconstruction against the original export in an isolated JavaScript context, covering center, both saturation limits, fractional input, signed 32-bit wraparound, and `NaN`.

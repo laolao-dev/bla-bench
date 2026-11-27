@@ -1,0 +1,10 @@
+Node v24.22.2; npm 11.19.1; Git 2.55.0.windows.5; Codex 0.171.0
+Scope: one official original only; no live Codex/model run or global changes.
+Budget: 5–10 min estimate, 15 min max; one clone/install/benchmark, at most 2 fixes per error; zero paid or model calls.
+Baseline: fresh workspace; clone 8dcf9858f5c931e26c4d3526b29c8e10a97ec17f. Rollback: discard new workspace artifacts only. CONTINUE.
+Tool diagnostics (non-build): rg src/cli* -> rg: src/cli*: IO error for operation on src/cli*: 文件名、目录名或卷标语法不正确。 (os error 123); corrected via src/cli.ts. apply_patch stdin -> Error: --codex-run-as-apply-patch requires a UTF-8 PATCH argument.; retry via native argv.
+Official benchmark exit 0; all 16 runtime checks passed. Reported token/cost figures are estimates only.
+All 16 baseline fixtures materialized; dx-ball-sound-pan.js (403 bytes) is the smallest .js and the target copy matches SHA256 
+CC017D00B3F3BCF34CAF7099886B65B5995A4EF8B3489ABD52B4394609BD8131
+Codex MCP configuration: rea enabled. No live REA or model call.
+Two parser tests passed; prompt matches exactly; no runs directory or results.csv. Final verification: STOP (ready for user-run).

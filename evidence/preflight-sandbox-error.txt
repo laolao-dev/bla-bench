@@ -1,0 +1,12 @@
+# 首次失败（离线预检，未消耗真实运行）
+时间: 2026-11-25（构建后、真实运行前）
+命令: codex sandbox linux --full-auto -- bash -c "echo inside > ok.txt ..."（容器内，--cap-drop ALL, no-new-privileges, 默认 seccomp）
+真实报错:
+bwrap: No permissions to create a new namespace, likely because the kernel does not allow non-privileged user namespaces. On e.g. debian this can be enabled with 'sysctl kernel.unprivileged_userns_clone=1'.
+
+分类: 环境/隔离层冲突（非凭据、非网络、非代码错误）。
+  Codex 的 Linux workspace-write 沙箱用 bubblewrap 建 user namespace；Docker 默认 seccomp + cap-drop 不允许，
+  run_once.py 固定的 `-s workspace-write` 会让 agent 的所有 shell 命令失败，结果不可比。
+最小修复（仅一次）: run_once.py 的沙箱模式改为读环境变量 BLA_CODEX_SANDBOX（默认仍是 workspace-write，本机行为不变）；
+  镜像内设 BLA_CODEX_SANDBOX=danger-full-access，由容器本身充当沙箱。
+  未采用: --privileged / seccomp=unconfined / 开 userns —— 都会削弱容器隔离，违背迁移目的。
